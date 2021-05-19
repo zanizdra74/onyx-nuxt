@@ -1,0 +1,96 @@
+@font-face {
+  font-family: "Montserrat";
+  src: url("./fonts/Montserrat/Montserrat-ExtraBold.ttf");
+  src: url("./fonts/Montserrat/Montserrat-ExtraBold.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+@font-face {
+  font-family: "Roboto-Regular";
+  src: url("./fonts/Roboto/Roboto-Regular.ttf");
+  src: url("./fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  font-style: normal;
+  font-weight: normal;
+}
+/* http://meyerweb.com/eric/tools/css/reset/
+  v2.0 | 20110126
+  License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section, main {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*-------------------------------------------------------------------------------------*/
+.section-main{
+  width: 992px;
+  padding-top: 150px;
+}
+.bg-light .section-main{
+  color: #2D3A4B;
+}
+.bg-dark .section-main{
+  color: #E4DDDD;
+}
+.section-main h1{
+  font-family: Montserrat;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 80px;
+  margin: 0;
+}
+.bg-light .section-main h1{
+  color: rgba(45, 58, 75, 0.1);
+}
+.bg-dark .section-main h1{
+  color: rgba(245, 225, 68, 0.1);
+}
+.section-main {
+  font-family: Roboto-Regular;
+  height: 100%;
+}
+.text-section-near-right-nav{
+  padding-right: 50px;
+}
+.dark-page-text{
+  color: #E4DDDD;
+}

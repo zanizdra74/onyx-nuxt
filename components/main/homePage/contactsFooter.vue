@@ -1,13 +1,87 @@
 <template>
-    $END$
+  <section id="section-contact-footer" class="section-main">
+    <div id="contact-form">
+      <h1>НАПИШИТЕ НАМ</h1>
+      <form
+        v-model="contactForm"
+      >
+        <div id="block-lead-name" class="block-folder-form">
+          <input id="lead-name" v-model="contactForm.leadName" />
+          <span>Recuared</span>
+        </div>
+        <div>
+          <input id="lead-email" v-model="contactForm.leadEmail" />
+        </div>
+        <div>
+          <input id="lead-phone" v-model="contactForm.leadPhone" />
+        </div>
+        <div>
+          <textarea id="mail-description" v-model="contactForm.mailDescription"></textarea>
+        </div>
+        <button id="button-send-mail" type="button" @click="actionSendMail">Send</button>
+      </form>
+    </div>
+    <footer-main />
+  </section>
 </template>
 
 <script>
+  import footerMain from "../footerMain";
     export default {
-        name: "contactsFooter"
+        name: "contactsFooter",
+        components: {footerMain, },
+        data(){
+            return {
+                contactForm: {
+                    leadName: null,
+                    leadEmail: null,
+                    leadPhone: null,
+                    mailDescription: null,
+                },
+                validFolderForm: {
+                    leadName: {
+                        status: true,
+                        span: null,
+                    },
+                    leadEmail: {
+                        status: true,
+                        span: null,
+                    },
+                    leadPhone: {
+                        status: true,
+                        span: null,
+                    },
+                    mailDescription: {
+                        status: true,
+                        span: null,
+                    },
+                }
+            }
+        },
+        methods:{
+            actionSendMail(){
+                alert('Hi');
+            }
+        }
     }
 </script>
-
 <style scoped>
-
+  #section-contact-footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0;
+  }
+  #contact-form{
+    width: 100%;
+    padding-top: 150px;
+  }
+  #contact-form h1{
+    font-style: normal;
+    font-size: 36px;
+    line-height: 24px;
+    text-align: center;
+    color: #2D3A4B;
+  }
 </style>

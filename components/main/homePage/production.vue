@@ -35,9 +35,12 @@
   #section-production, #container-slider-production, .variable-part-slider{
     height: 100%;
   }
+
   #section-production h1{
     text-align: right;
+    /*
     color: rgba(245, 225, 68, 0.1);
+     */
   }
   #section-production h2{
     color: #F5E144;
