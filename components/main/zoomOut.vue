@@ -165,8 +165,8 @@
 
   #cd-intro {
     position: relative;
-    height: 300px;
-    margin-top: 50px;
+    height: 100vh;
+    margin-top: 70px;
     z-index: 1;
   }
   #cd-intro #cd-intro-background {
@@ -200,10 +200,10 @@
     text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
   }
   @media only screen and (min-width: 768px) {
-    #cd-intro {
-      height: 400px;
+/*    #cd-intro {
+      height: 100vh;
       margin-top: 70px;
-    }
+    }*/
     #cd-intro h1 {
       font-size: 30px;
       font-size: 1.875rem;

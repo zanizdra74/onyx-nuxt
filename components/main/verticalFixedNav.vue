@@ -5,12 +5,12 @@
       <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
       <ul>
-        <li><a href="#index-section-header" class="active"><span class="label">Вверх</span></a></li>
-        <li><a href="#index-section-about-us"><span class="label">О нас</span></a></li>
-        <li><a href="#index-section-production"><span class="label">Продукция</span></a></li>
-        <li><a href="#index-section-advantages"><span class="label">Выгоды</span></a></li>
-        <li><a href="#index-section-reviews"><span class="label">Отзывы</span></a></li>
-        <li><a href="#index-section-contacts-footer"><span class="label">Контакты</span></a></li>
+        <li><a href="#index-section-header" class="active link-vert-nav"><span class="label">Вверх</span></a></li>
+        <li><a href="#index-section-about-us" class="link-vert-nav"><span class="label">О нас</span></a></li>
+        <li><a href="#index-section-production" class="link-vert-nav"><span class="label">Продукция</span></a></li>
+        <li><a href="#index-section-advantages" class="link-vert-nav"><span class="label">Выгоды</span></a></li>
+        <li><a href="#index-section-reviews" class="link-vert-nav"><span class="label">Отзывы</span></a></li>
+        <li><a href="#index-section-contacts-footer" class="link-vert-nav"><span class="label">Контакты</span></a></li>
       </ul>
 
     </nav><!-- .cd-vertical-nav -->
@@ -23,8 +23,19 @@
     export default {
         name: "verticalFixedNav",
         mounted() {
-            var	scrolling = false;
-            var contentSections = $('.cd-section'),
+
+            let	scrolling = false;
+          /*
+          let contentSections = document.querySelector('.cd-section')
+          let   verticalNavigation = document.querySelector('.cd-vertical-nav')
+          console.log('verticalNavigation = ', verticalNavigation)
+          let   navigationItems = verticalNavigation.querySelectorAll('a')
+          let   navTrigger = document.getElementsByClassName('.cd-nav-trigger')
+          let   scrollArrow = document.getElementsByClassName('.cd-scroll-down')
+          console.log('scrollArrow = ', scrollArrow)
+          */
+
+            let contentSections = $('.cd-section'),
                 verticalNavigation = $('.cd-vertical-nav'),
                 navigationItems = verticalNavigation.find('a'),
                 navTrigger = $('.cd-nav-trigger'),
@@ -33,6 +44,8 @@
             $(window).on('scroll', checkScroll);
 
             //smooth scroll to the selected section
+
+//            verticalNavigation.addEventListener('scroll',  function(event){
             verticalNavigation.on('click', 'a', function(event){
                 event.preventDefault();
                 smoothScroll($(this.hash));
@@ -40,6 +53,7 @@
             });
 
             //smooth scroll to the second section
+//            scrollArrow.addEventListener('click',  function(event){
             scrollArrow.on('click', function(event){
                 event.preventDefault();
                 smoothScroll($(this.hash));
@@ -47,6 +61,7 @@
 
             // open navigation if user clicks the .cd-nav-trigger - small devices only
 
+//            navTrigger.addEventListener('click',  function(event){
             navTrigger.on('click', function(event){
                 event.preventDefault();
                 verticalNavigation.toggleClass('open');
@@ -106,69 +121,6 @@
     white-space: nowrap;
     color: transparent;
   }
-
-  /* --------------------------------
-
-  Navigation trigger - visible on small devices only
-
-  -------------------------------- */
-  /*
-  .cd-nav-trigger {
-    display: block;
-    position: fixed;
-    z-index: 102;
-    bottom: 30px;
-    right: 5%;
-    height: 44px;
-    width: 44px;
-    border-radius: 0.25em;
-    background: rgba(234, 242, 227, 0.9);
-    cursor: pointer;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    -o-appearance: none;
-    appearance: none;
-    border: none;
-    outline: none;
-  }
-  .cd-nav-trigger span {
-    position: absolute;
-    height: 4px;
-    width: 4px;
-    background-color: #3a2c41;
-    border-radius: 50%;
-    left: 50%;
-    top: 50%;
-    bottom: auto;
-    right: auto;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -o-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
-  }
-  .cd-nav-trigger span::before, .cd-nav-trigger span::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    background-color: #3a2c41;
-    border-radius: inherit;
-  }
-  .cd-nav-trigger span::before {
-    top: -9px;
-  }
-  .cd-nav-trigger span::after {
-    bottom: -9px;
-  }
-  @media only screen and (min-width: 300px) {
-    .cd-nav-trigger {
-      display: none;
-    }
-  }
-*/
   /* --------------------------------
 
   Vertical navigation
