@@ -4,38 +4,38 @@
     <vertical-fixed-nav />
     <div class="container-flex">
       <div class="container-col">
-        <section id="index-section-header" class="bg-dark chameleon-section">
+        <section id="index-section-header" class="bg-dark chameleon-section cd-section">
           <header-nav dark-logo = "light" :show-hamburger-menu="seeHamburger" />
           <div class="chameleon-main">
             <zoom-out />
           </div>
         </section>
 
-        <section id="index-section-about-us" class="bg-light chameleon-section">
+        <section id="index-section-about-us" class="bg-light chameleon-section cd-section">
           <header-nav class="chameleon-header" dark-logo = "dark" :show-hamburger-menu="seeHamburger" />
           <div class="chameleon-main container-section-main">
             <about-us />
           </div>
         </section>
-        <section id="index-section-production" class="bg-dark chameleon-section">
+        <section id="index-section-production" class="bg-dark chameleon-section cd-section">
           <header-nav class="chameleon-header" dark-logo = "light" :show-hamburger-menu="seeHamburger" />
           <div class="chameleon-main container-section-main">
             <production />
           </div>
         </section>
-        <section id="index-section-advantages" class="bg-light chameleon-section">
+        <section id="index-section-advantages" class="bg-light chameleon-section cd-section">
           <header-nav class="chameleon-header" dark-logo = "dark" :show-hamburger-menu="seeHamburger" />
           <div class="chameleon-main container-section-main">
             <advantages />
           </div>
         </section>
-        <section id="index-section-reviews" class="bg-dark chameleon-section">
+        <section id="index-section-reviews" class="bg-dark chameleon-section cd-section">
           <header-nav class="chameleon-header" dark-logo = "light" :show-hamburger-menu="seeHamburger" />
           <div class="chameleon-main container-section-main">
             <reviews />
           </div>
         </section>
-        <section id="index-section-contacts-footer" class="bg-light chameleon-section">
+        <section id="index-section-contacts-footer" class="bg-light chameleon-section cd-section">
           <header-nav class="chameleon-header" dark-logo = "dark" :show-hamburger-menu="seeHamburger" />
           <div id="container-main-contact-footer" class="chameleon-main container-section-main">
             <contacts-footer />

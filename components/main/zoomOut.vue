@@ -43,7 +43,7 @@
             function animateIntro () {
                 var scrollPercentage = ($(window).scrollTop()/introSectionHeight).toFixed(5),
                     scaleValue = 1 - scrollPercentage*scaleSpeed;
-                console.log (' scrollPercentage =  ', scrollPercentage);
+//                console.log (' scrollPercentage =  ', scrollPercentage);
                 //check if the introSection is still visible
                 if( $(window).scrollTop() < introSectionHeight) {
                     introSection.css({

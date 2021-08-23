@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="cd-vertical-nav">
+    <nav id="vertical-menu" class="cd-vertical-nav">
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
@@ -24,22 +24,23 @@
         name: "verticalFixedNav",
         mounted() {
 
+
+            this.activeVerticalMenu()
+
+
+
+
+
+
             let	scrolling = false;
-          /*
-          let contentSections = document.querySelector('.cd-section')
-          let   verticalNavigation = document.querySelector('.cd-vertical-nav')
-          console.log('verticalNavigation = ', verticalNavigation)
-          let   navigationItems = verticalNavigation.querySelectorAll('a')
-          let   navTrigger = document.getElementsByClassName('.cd-nav-trigger')
-          let   scrollArrow = document.getElementsByClassName('.cd-scroll-down')
-          console.log('scrollArrow = ', scrollArrow)
-          */
 
             let contentSections = $('.cd-section'),
                 verticalNavigation = $('.cd-vertical-nav'),
                 navigationItems = verticalNavigation.find('a'),
                 navTrigger = $('.cd-nav-trigger'),
                 scrollArrow = $('.cd-scroll-down');
+
+  //          console.log('navigationItems = ', navigationItems)
 
             $(window).on('scroll', checkScroll);
 
@@ -68,6 +69,7 @@
             });
 
             function checkScroll() {
+
                 if( !scrolling ) {
                     scrolling = true;
                     (!window.requestAnimationFrame) ? setTimeout(updateSections, 300) : window.requestAnimationFrame(updateSections);
@@ -75,17 +77,21 @@
             }
 
             function updateSections() {
-                var halfWindowHeight = $(window).height()/2,
-                    scrollTop = $(window).scrollTop();
-                contentSections.each(function(){
-                    var section = $(this),
-                        sectionId = section.attr('id'),
-                        navigationItem = navigationItems.filter('[href^="#'+ sectionId +'"]');
-                    ( (section.offset().top - halfWindowHeight < scrollTop ) && ( section.offset().top + section.height() - halfWindowHeight > scrollTop) )
-                        ? navigationItem.addClass('active')
-                        : navigationItem.removeClass('active');
-                });
-                scrolling = false;
+ //             console.log('updateSections')
+              var halfWindowHeight = $(window).height()/2,
+                  scrollTop = $(window).scrollTop();
+ //             console.log ('halfWindowHeight -==', halfWindowHeight, ' scrollTop==', scrollTop, 'contentSections==', contentSections)
+              contentSections.each(function(){
+ //               console.log ('each -==')
+                var section = $(this),
+                    sectionId = section.attr('id'),
+                    navigationItem = navigationItems.filter('[href^="#'+ sectionId +'"]');
+  //              console.log ('scrollTop -==', scrollTop, ' halfWindowHeight==', halfWindowHeight, ' section ', section)
+                ( (section.offset().top - halfWindowHeight < scrollTop ) && ( section.offset().top + section.height() - halfWindowHeight > scrollTop) )
+                    ? navigationItem.addClass('active')
+                    : navigationItem.removeClass('active');
+              });
+              scrolling = false;
             }
 
             function smoothScroll(target) {
@@ -93,6 +99,37 @@
                     {'scrollTop':target.offset().top},
                     300
                 );
+            }
+        },
+        methods: {
+            activeVerticalMenu(){
+ //             const sections = document.querySelectorAll("section");
+              const sections = document.querySelectorAll(".chameleon-section");
+              console.log('sections = ', sections)
+              const navLi = document.querySelectorAll("#vertical-menu ul li");
+              console.log('snavLi = ', navLi)
+
+
+              window.addEventListener("scroll", () => {
+                let current = "";
+                sections.forEach((section) => {
+                  const sectionTop = section.offsetTop;
+                  const sectionHeight = section.clientHeight;
+                  if (pageYOffset >= sectionTop - sectionHeight / 3) {
+
+                    current = section.getAttribute("id", sectionTop, sectionHeight);
+                   console.log('!!!!!current = ', current, 'sectionTop = ', sectionTop, 'sectionHeight = ', sectionHeight)
+                  }
+                });
+
+                navLi.forEach((li) => {
+                  li.classList.remove("active");
+                           console.log('li.classList.', li.classList)
+                  if (li.classList.contains(current)) {
+                    li.classList.add("active");
+                  }
+                });
+              });
             }
         }
     }
@@ -406,12 +443,7 @@
       transform: translateX(-50%) translateY(-7.5em) scale(0.25);
     }
 
-    .cd-vertical-nav li:first-of-type a.active::before,
-    .cd-vertical-nav li:nth-of-type(2) a.active::before,
-    .cd-vertical-nav li:nth-of-type(3) a.active::before,
-    .cd-vertical-nav li:nth-of-type(4) a.active::before,
-    .cd-vertical-nav li:nth-of-type(5) a.active::before,
-    .cd-vertical-nav li:nth-of-type(6) a.active::before
+    .cd-vertical-nav li:first-of-type a.active::before
     {
       -webkit-transform: translateX(-50%) translateY(7.5em) scale(0.5);
       -moz-transform: translateX(-50%) translateY(7.5em) scale(0.5);
@@ -419,6 +451,48 @@
       -o-transform: translateX(-50%) translateY(7.5em) scale(0.5);
       transform: translateX(-50%) translateY(7.5em) scale(0.5);
     }
+    .cd-vertical-nav li:nth-of-type(2) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(4.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(4.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(4.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(4.5em) scale(0.5);
+      transform: translateX(-50%) translateY(4.5em) scale(0.5);
+    }
+    .cd-vertical-nav li:nth-of-type(3) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(1.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(1.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(1.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(1.5em) scale(0.5);
+      transform: translateX(-50%) translateY(1.5em) scale(0.5);
+    }
+    .cd-vertical-nav li:nth-of-type(4) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+      transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+    }
+    .cd-vertical-nav li:nth-of-type(5) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+      transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+    }
+    .cd-vertical-nav li:nth-of-type(6) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+      transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+    }
+
+
     .cd-vertical-nav .label {
       display: block;
       /* Force Hardware Acceleration */
