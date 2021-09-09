@@ -1,43 +1,21 @@
 <template>
-  <el-container>
-    <el-header>
-      <header-navigation />
-    </el-header>
-    <el-main>
-
+  <div>
+    <header>
+      <sec-header />
+    </header>
+    <main>
       <nuxt />
-    </el-main>
-    <el-footer>Footer</el-footer>
-  </el-container>
-
-
+    </main>
+    <footer>2Footer</footer>
+  </div>
 </template>
 <script>
-import HeaderNavigation from "../components/main/HeaderNavigation";
+import SecHeader from "../components/main/secondaryPage/secHeader/secHeader";
 export default {
+  name: "secondary",
   components: {
-    HeaderNavigation,
-    name: "secondary"
+    SecHeader,
   }
-}
-</script>
-<style>
-body{
-  margin: 0;
-}
-</style>
-
-<style>
-
-</style>
-
-<template>
-
-</template>
-
-<script>
-export default {
-  name: "secondary"
 }
 </script>
 

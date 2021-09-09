@@ -28,6 +28,10 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    ['nuxt-modernizr',{
+      'feature-detects': ['css/scrollbars', 'css/overflow-scrolling'],
+        options: ['setClasses'],
+    }],
   ],
   axios: {
   },

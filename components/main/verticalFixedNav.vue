@@ -1,16 +1,18 @@
 <template>
   <div>
-    <nav class="cd-vertical-nav">
+    <nav id="vertical-menu" class="cd-vertical-nav">
+<!--
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+      -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
 
       <ul>
-        <li><a href="#index-section-header" class="active link-vert-nav"><span class="label">Вверх</span></a></li>
-        <li><a href="#index-section-about-us" class="link-vert-nav"><span class="label">О нас</span></a></li>
-        <li><a href="#index-section-production" class="link-vert-nav"><span class="label">Продукция</span></a></li>
-        <li><a href="#index-section-advantages" class="link-vert-nav"><span class="label">Выгоды</span></a></li>
-        <li><a href="#index-section-reviews" class="link-vert-nav"><span class="label">Отзывы</span></a></li>
-        <li><a href="#index-section-contacts-footer" class="link-vert-nav"><span class="label">Контакты</span></a></li>
+        <li><a href="#index-section-header" class="active link-vert-nav" data-nav="index-section-header"><span class="label">Вверх</span></a></li>
+        <li><a href="#index-section-about-us" class="link-vert-nav" data-nav="index-section-about-us"><span class="label">О нас</span></a></li>
+        <li><a href="#index-section-production" class="link-vert-nav" data-nav="index-section-production"><span class="label">Продукция</span></a></li>
+        <li><a href="#index-section-advantages" class="link-vert-nav" data-nav="index-section-advantages"><span class="label">Выгоды</span></a></li>
+        <li><a href="#index-section-reviews" class="link-vert-nav" data-nav="index-section-reviews"><span class="label">Отзывы</span></a></li>
+        <li><a href="#index-section-contacts-footer" class="link-vert-nav" data-nav="index-section-contacts-footer"><span class="label">Контакты</span></a></li>
       </ul>
 
     </nav><!-- .cd-vertical-nav -->
@@ -20,82 +22,48 @@
 </template>
 
 <script>
-    export default {
-        name: "verticalFixedNav",
-        mounted() {
-
-            let	scrolling = false;
-          /*
-          let contentSections = document.querySelector('.cd-section')
-          let   verticalNavigation = document.querySelector('.cd-vertical-nav')
-          console.log('verticalNavigation = ', verticalNavigation)
-          let   navigationItems = verticalNavigation.querySelectorAll('a')
-          let   navTrigger = document.getElementsByClassName('.cd-nav-trigger')
-          let   scrollArrow = document.getElementsByClassName('.cd-scroll-down')
-          console.log('scrollArrow = ', scrollArrow)
-          */
-
-            let contentSections = $('.cd-section'),
-                verticalNavigation = $('.cd-vertical-nav'),
-                navigationItems = verticalNavigation.find('a'),
-                navTrigger = $('.cd-nav-trigger'),
-                scrollArrow = $('.cd-scroll-down');
-
-            $(window).on('scroll', checkScroll);
-
-            //smooth scroll to the selected section
-
-//            verticalNavigation.addEventListener('scroll',  function(event){
-            verticalNavigation.on('click', 'a', function(event){
-                event.preventDefault();
-                smoothScroll($(this.hash));
-                verticalNavigation.removeClass('open');
-            });
-
-            //smooth scroll to the second section
-//            scrollArrow.addEventListener('click',  function(event){
-            scrollArrow.on('click', function(event){
-                event.preventDefault();
-                smoothScroll($(this.hash));
-            });
-
-            // open navigation if user clicks the .cd-nav-trigger - small devices only
-
-//            navTrigger.addEventListener('click',  function(event){
-            navTrigger.on('click', function(event){
-                event.preventDefault();
-                verticalNavigation.toggleClass('open');
-            });
-
-            function checkScroll() {
-                if( !scrolling ) {
-                    scrolling = true;
-                    (!window.requestAnimationFrame) ? setTimeout(updateSections, 300) : window.requestAnimationFrame(updateSections);
-                }
-            }
-
-            function updateSections() {
-                var halfWindowHeight = $(window).height()/2,
-                    scrollTop = $(window).scrollTop();
-                contentSections.each(function(){
-                    var section = $(this),
-                        sectionId = section.attr('id'),
-                        navigationItem = navigationItems.filter('[href^="#'+ sectionId +'"]');
-                    ( (section.offset().top - halfWindowHeight < scrollTop ) && ( section.offset().top + section.height() - halfWindowHeight > scrollTop) )
-                        ? navigationItem.addClass('active')
-                        : navigationItem.removeClass('active');
-                });
-                scrolling = false;
-            }
-
+  export default {
+    name: "verticalFixedNav",
+    mounted() {
+      this.actionsVerticalMenu()
+    },
+    methods: {
+      actionsVerticalMenu(){
+        const contentSections = document.querySelectorAll(".cd-section")
+        const verticalNavigation =  document.querySelectorAll(".cd-vertical-nav a")
+        //smooth scroll to the selected section
+        verticalNavigation.forEach(item=>{
+          item.addEventListener('click',  function(event){
+            event.preventDefault();
+            smoothScroll(item.getAttribute("data-nav"));
             function smoothScroll(target) {
-                $('body,html').animate(
-                    {'scrollTop':target.offset().top},
-                    300
-                );
+              let scrollDiv = document.getElementById(target).offsetTop;
+              window.scrollTo({ top: scrollDiv, behavior: "smooth"});
             }
-        }
+          })
+        })
+
+        // add active class
+        window.addEventListener("scroll", () => {
+          let currentID = "";
+          contentSections.forEach(item=>{
+            const section = item
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if (pageYOffset >= sectionTop - sectionHeight / 4) {
+              currentID = section.getAttribute("id");
+            }
+          })
+          verticalNavigation.forEach((a) => {
+            a.classList.remove("active");
+            if (a.getAttribute("data-nav") === currentID){
+              a.classList.add("active");
+            }
+          });
+        });
+      }
     }
+  }
 </script>
 
 <style scoped>
@@ -406,12 +374,7 @@
       transform: translateX(-50%) translateY(-7.5em) scale(0.25);
     }
 
-    .cd-vertical-nav li:first-of-type a.active::before,
-    .cd-vertical-nav li:nth-of-type(2) a.active::before,
-    .cd-vertical-nav li:nth-of-type(3) a.active::before,
-    .cd-vertical-nav li:nth-of-type(4) a.active::before,
-    .cd-vertical-nav li:nth-of-type(5) a.active::before,
-    .cd-vertical-nav li:nth-of-type(6) a.active::before
+    .cd-vertical-nav li:first-of-type a.active::before
     {
       -webkit-transform: translateX(-50%) translateY(7.5em) scale(0.5);
       -moz-transform: translateX(-50%) translateY(7.5em) scale(0.5);
@@ -419,6 +382,48 @@
       -o-transform: translateX(-50%) translateY(7.5em) scale(0.5);
       transform: translateX(-50%) translateY(7.5em) scale(0.5);
     }
+    .cd-vertical-nav li:nth-of-type(2) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(4.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(4.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(4.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(4.5em) scale(0.5);
+      transform: translateX(-50%) translateY(4.5em) scale(0.5);
+    }
+    .cd-vertical-nav li:nth-of-type(3) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(1.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(1.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(1.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(1.5em) scale(0.5);
+      transform: translateX(-50%) translateY(1.5em) scale(0.5);
+    }
+    .cd-vertical-nav li:nth-of-type(4) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+      transform: translateX(-50%) translateY(-1.5em) scale(0.5);
+    }
+    .cd-vertical-nav li:nth-of-type(5) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+      transform: translateX(-50%) translateY(-4.5em) scale(0.5);
+    }
+    .cd-vertical-nav li:nth-of-type(6) a.active::before
+    {
+      -webkit-transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+      -moz-transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+      -ms-transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+      -o-transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+      transform: translateX(-50%) translateY(-7.5em) scale(0.5);
+    }
+
+
     .cd-vertical-nav .label {
       display: block;
       /* Force Hardware Acceleration */
@@ -438,6 +443,8 @@
       -moz-transition: -moz-transform 0.4s;
       transition: transform 0.4s;
     }
+
+
     .no-touch .cd-vertical-nav:hover a::before{
       background: #eaf2e3;
     }
@@ -446,7 +453,7 @@
     }
     .no-touch .cd-vertical-nav:hover a.active::before, .no-touch .cd-vertical-nav:hover a::before, .no-touch .cd-vertical-nav:hover a::after, .touch .cd-vertical-nav li:nth-of-type(n) a::before, .touch .cd-vertical-nav li:nth-of-type(n) a::after {
       -webkit-transform: translateX(-50%) scale(1);
-      -moz-transform: translateX(-50%) scale(1);
+/*      -moz-transform: translateX(-50%) scale(1);*/
       -ms-transform: translateX(-50%) scale(1);
       -o-transform: translateX(-50%) scale(1);
       transform: translateX(-50%) scale(1);
@@ -515,7 +522,7 @@
       font-size: 2rem;
     }
   }
-
+/*
   .cd-scroll-down {
     position: absolute;
     left: 50%;
@@ -530,12 +537,15 @@
     height: 44px;
     background: url('../../assets/verticalNav/cd-arrow-bottom.svg') no-repeat center center;
   }
-
+*/
   /* --------------------------------
 
   no-js
 
   -------------------------------- */
+
+  /*
+
   .no-js .cd-nav-trigger {
     display: none;
   }
@@ -583,5 +593,5 @@
     -o-transform: translateX(0);
     transform: translateX(0);
   }
-
+*/
 </style>

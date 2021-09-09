@@ -1,280 +1,300 @@
 <template>
-
   <section id="cd-intro">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <div id="cd-intro-background"></div>
     <div id="cd-intro-tagline">
-<!--      <h1>Zoom-out Intro Effect</h1> -->
+      <!--      <h1>Zoom-out Intro Effect</h1> -->
     </div>
   </section>
 </template>
 
 <script>
-    export default {
-        name: "zoomOut",
-        mounted(){
-            var introSection = $('#cd-intro-background'),
-                introSectionHeight = introSection.height(),
-                //change scaleSpeed if you want to change the speed of the scale effect
-                scaleSpeed = 1,
-                //change opacitySpeed if you want to change the speed of opacity reduction effect
-                opacitySpeed = 1.6;
+export default {
+  name: "zoomOut",
+  mounted() {
+    var introSection = $('#cd-intro-background'),
+      introSectionHeight = introSection.height(),
+      //change scaleSpeed if you want to change the speed of the scale effect
+      scaleSpeed = 1,
+      //change opacitySpeed if you want to change the speed of opacity reduction effect
+      opacitySpeed = 1.6;
 
-            //update this value if you change this breakpoint in the style.css file (or _layout.scss if you use SASS)
-            var MQ = 600;
+    //update this value if you change this breakpoint in the style.css file (or _layout.scss if you use SASS)
+    var MQ = 600;
 
-            triggerAnimation();
-            $(window).on('resize', function(){
-                triggerAnimation();
+        triggerAnimation();
+        $(window).on('resize', function () {
+          triggerAnimation;
+        });
+
+        //bind the scale event to window scroll if window width > $MQ (unbind it otherwise)
+        function triggerAnimation() {
+          if ($(window).width() >= MQ) {
+            $(window).on('scroll', function () {
+              //The window.requestAnimationFrame() method tells the browser that you wish to perform an animation- the browser can optimize it so animations will be smoother
+              window.requestAnimationFrame(animateIntro);
             });
-
-            //bind the scale event to window scroll if window width > $MQ (unbind it otherwise)
-            function triggerAnimation(){
-                if($(window).width()>= MQ) {
-                    $(window).on('scroll', function(){
-                        //The window.requestAnimationFrame() method tells the browser that you wish to perform an animation- the browser can optimize it so animations will be smoother
-                        window.requestAnimationFrame(animateIntro);
-                    });
-                } else {
-                    $(window).off('scroll');
-                }
-            }
-            //assign a scale transformation to the introSection element and reduce its opacity
-            function animateIntro () {
-                var scrollPercentage = ($(window).scrollTop()/introSectionHeight).toFixed(5),
-                    scaleValue = 1 - scrollPercentage*scaleSpeed;
-                console.log (' scrollPercentage =  ', scrollPercentage);
-                //check if the introSection is still visible
-                if( $(window).scrollTop() < introSectionHeight) {
-                    introSection.css({
-                        '-moz-transform': 'scale(' + scaleValue + ') translateZ(0)',
-                        '-webkit-transform': 'scale(' + scaleValue + ') translateZ(0)',
-                        '-ms-transform': 'scale(' + scaleValue + ') translateZ(0)',
-                        '-o-transform': 'scale(' + scaleValue + ') translateZ(0)',
-                        'transform': 'scale(' + scaleValue + ') translateZ(0)',
-                        'opacity': 1 - scrollPercentage*opacitySpeed
-
-                    });
-                }
-            }
-
-            /********************************
-             open/close submenu on mobile
-             ********************************/
-            $('.cd-main-nav').on('click', function(event){
-                if($(event.target).is('.cd-main-nav')) $(this).children('ul').toggleClass('is-visible');
-            });
+          } else {
+            $(window).off('scroll');
+          }
         }
+
+    //assign a scale transformation to the introSection element and reduce its opacity
+    function animateIntro() {
+      var scrollPercentage = ($(window).scrollTop() / introSectionHeight).toFixed(5),
+        scaleValue = 1 - scrollPercentage * scaleSpeed;
+//                console.log (' scrollPercentage =  ', scrollPercentage);
+      //check if the introSection is still visible
+      if ($(window).scrollTop() < introSectionHeight) {
+        introSection.css({
+          '-moz-transform': 'scale(' + scaleValue + ') translateZ(0)',
+          '-webkit-transform': 'scale(' + scaleValue + ') translateZ(0)',
+          '-ms-transform': 'scale(' + scaleValue + ') translateZ(0)',
+          '-o-transform': 'scale(' + scaleValue + ') translateZ(0)',
+          'transform': 'scale(' + scaleValue + ') translateZ(0)',
+          'opacity': 1 - scrollPercentage * opacitySpeed
+
+        });
+      }
     }
+
+    /********************************
+     open/close submenu on mobile
+     ********************************/
+    $('.cd-main-nav').on('click', function (event) {
+      if ($(event.target).is('.cd-main-nav')) $(this).children('ul').toggleClass('is-visible');
+    });
+  }
+}
 </script>
 
 <style scoped>
-  html * {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
+html * {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-  *, *:after, *:before {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-  }
+*, *:after, *:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-  body {
-    font-size: 100%;
-    font-family: "Ubuntu", sans-serif;
-    color: #f35535;
-    background-color: #2e313d;
-  }
+body {
+  font-size: 100%;
+  font-family: "Ubuntu", sans-serif;
+  color: #f35535;
+  background-color: #2e313d;
+}
 
-  a {
-    text-decoration: none;
-  }
+a {
+  text-decoration: none;
+}
 
-  /* --------------------------------
+/* --------------------------------
 
-  Modules - reusable parts of our design
+Modules - reusable parts of our design
 
-  -------------------------------- */
-  .cd-container {
-    /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
-    width: 90%;
-    max-width: 768px;
-    margin: 0 auto;
-  }
-  .cd-container::after {
-    /* clearfix */
-    content: '';
-    display: table;
-    clear: both;
-  }
+-------------------------------- */
+.cd-container {
+  /* this class is used to give a max-width to the element it is applied to, and center it horizontally when it reaches that max-width */
+  width: 90%;
+  max-width: 768px;
+  margin: 0 auto;
+}
 
-  /* --------------------------------
+.cd-container::after {
+  /* clearfix */
+  content: '';
+  display: table;
+  clear: both;
+}
 
-  Main components
+/* --------------------------------
 
-  -------------------------------- */
+Main components
+
+-------------------------------- */
+.cd-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: #f35535;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.cd-header:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.cd-header #cd-logo {
+  float: left;
+  margin: 13px 0 0 5%;
+}
+
+.cd-header #cd-logo img {
+  display: block;
+}
+
+@media only screen and (min-width: 768px) {
   .cd-header {
+    height: 70px;
+  }
+
+  .cd-header #cd-logo {
+    margin: 23px 0 0 5%;
+  }
+}
+
+.cd-main-nav {
+  float: right;
+  margin-right: 5%;
+  width: 44px;
+  height: 100%;
+  background: url("../../assets/cd-intro-background.jpg") no-repeat center center;
+  background-size: 44px 44px;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 768px) {
+  .cd-main-nav {
+    width: auto;
+    height: auto;
+    background: none;
+    cursor: auto;
+  }
+}
+
+#cd-intro {
+  position: relative;
+  height: 100vh;
+  margin-top: 70px;
+  z-index: 1;
+}
+
+#cd-intro #cd-intro-background {
+  height: 100%;
+  width: 100%;
+  background: url("../../assets/cd-intro-background.jpg") no-repeat center center;
+  background-size: cover;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+#cd-intro #cd-intro-tagline {
+  position: absolute;
+  width: 90%;
+  /*    max-width: 1170px;*/
+  max-width: 2200px;
+  left: 50%;
+  top: 50%;
+  bottom: auto;
+  right: auto;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  -moz-transform: translateX(-50%) translateY(-50%);
+  -ms-transform: translateX(-50%) translateY(-50%);
+  -o-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+}
+
+#cd-intro h1 {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #FFF;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+@media only screen and (min-width: 768px) {
+  /*    #cd-intro {
+        height: 100vh;
+        margin-top: 70px;
+      }*/
+  #cd-intro h1 {
+    font-size: 30px;
+    font-size: 1.875rem;
+  }
+}
+
+/*
+@media only screen and (min-width: 1170px) {
+  #cd-intro {
     position: fixed;
-    top: 0;
+    /* do not overlap the header */
+/*
+    top: 70px;
     left: 0;
     width: 100%;
-    height: 50px;
-    background: #f35535;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-    z-index: 3;
-  }
-  .cd-header:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
-  .cd-header #cd-logo {
-    float: left;
-    margin: 13px 0 0 5%;
-  }
-  .cd-header #cd-logo img {
-    display: block;
-  }
-  @media only screen and (min-width: 768px) {
-    .cd-header {
-      height: 70px;
-    }
-    .cd-header #cd-logo {
-      margin: 23px 0 0 5%;
-    }
-  }
-
-  .cd-main-nav {
-    float: right;
-    margin-right: 5%;
-    width: 44px;
-    height: 100%;
-    background: url("../../assets/cd-intro-background.jpg") no-repeat center center;
-    background-size: 44px 44px;
-    cursor: pointer;
-  }
-   @media only screen and (min-width: 768px) {
-    .cd-main-nav {
-      width: auto;
-      height: auto;
-      background: none;
-      cursor: auto;
-    }
-  }
-
-  #cd-intro {
-    position: relative;
-    height: 100vh;
-    margin-top: 70px;
-    z-index: 1;
-  }
-  #cd-intro #cd-intro-background {
-    height: 100%;
-    width: 100%;
-    background: url("../../assets/cd-intro-background.jpg") no-repeat center center;
-    background-size: cover;
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-  }
-  #cd-intro #cd-intro-tagline {
-    position: absolute;
-    width: 90%;
-/*    max-width: 1170px;*/
-    max-width: 2200px;
-    left: 50%;
-    top: 50%;
-    bottom: auto;
-    right: auto;
-    -webkit-transform: translateX(-50%) translateY(-50%);
-    -moz-transform: translateX(-50%) translateY(-50%);
-    -ms-transform: translateX(-50%) translateY(-50%);
-    -o-transform: translateX(-50%) translateY(-50%);
-    transform: translateX(-50%) translateY(-50%);
+    height: 500px;
+    margin-top: 0;
   }
   #cd-intro h1 {
-    text-transform: uppercase;
-    font-size: 24px;
-    font-size: 1.5rem;
-    text-align: center;
-    color: #FFF;
-    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    font-size: 32px;
+    font-size: 2rem;
   }
-  @media only screen and (min-width: 768px) {
-/*    #cd-intro {
-      height: 100vh;
-      margin-top: 70px;
-    }*/
-    #cd-intro h1 {
-      font-size: 30px;
-      font-size: 1.875rem;
-    }
-  }
-  /*
-  @media only screen and (min-width: 1170px) {
-    #cd-intro {
-      position: fixed;
-      /* do not overlap the header */
-  /*
-      top: 70px;
-      left: 0;
-      width: 100%;
-      height: 500px;
-      margin-top: 0;
-    }
-    #cd-intro h1 {
-      font-size: 32px;
-      font-size: 2rem;
-    }
-  }
+}
 */
+.cd-content {
+  position: relative;
+  padding: 2em 0;
+  line-height: 1.6;
+  color: #65676f;
+  background-color: #f0f1e7;
+  z-index: 2;
+}
+
+.cd-content::before {
+  /* subtle gradient right above the main content */
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background: -webkit-linear-gradient(bottom, rgba(46, 49, 61, 0.5), rgba(46, 49, 61, 0));
+  background: linear-gradient(to top, rgba(46, 49, 61, 0.5), rgba(46, 49, 61, 0));
+}
+
+.no-cssgradients .cd-content::before {
+  /* use Modernizr to detect whether the browser supports or not css gradients */
+  display: none;
+}
+
+.cd-content h2 {
+  font-size: 20px;
+  font-size: 1.25rem;
+}
+
+.cd-content p {
+  margin: 1em 0;
+}
+
+@media only screen and (min-width: 768px) {
   .cd-content {
-    position: relative;
-    padding: 2em 0;
-    line-height: 1.6;
-    color: #65676f;
-    background-color: #f0f1e7;
-    z-index: 2;
+    line-height: 1.8;
   }
-  .cd-content::before {
-    /* subtle gradient right above the main content */
-    content: '';
-    position: absolute;
-    bottom: 100%;
-    left: 0;
-    width: 100%;
-    height: 50px;
-    background: -webkit-linear-gradient( bottom , rgba(46, 49, 61, 0.5), rgba(46, 49, 61, 0));
-    background: linear-gradient(to top, rgba(46, 49, 61, 0.5), rgba(46, 49, 61, 0));
-  }
-  .no-cssgradients .cd-content::before {
-    /* use Modernizr to detect whether the browser supports or not css gradients */
-    display: none;
-  }
+
   .cd-content h2 {
+    font-size: 30px;
+    font-size: 1.875rem;
+  }
+}
+
+@media only screen and (min-width: 1170px) {
+  .cd-content {
+    padding: 4em 0;
+    margin-top: 570px;
+  }
+
+  .cd-content p {
     font-size: 20px;
     font-size: 1.25rem;
   }
-  .cd-content p {
-    margin: 1em 0;
-  }
-  @media only screen and (min-width: 768px) {
-    .cd-content {
-      line-height: 1.8;
-    }
-    .cd-content h2 {
-      font-size: 30px;
-      font-size: 1.875rem;
-    }
-  }
-  @media only screen and (min-width: 1170px) {
-    .cd-content {
-      padding: 4em 0;
-      margin-top: 570px;
-    }
-    .cd-content p {
-      font-size: 20px;
-      font-size: 1.25rem;
-    }
-  }
+}
 
 </style>

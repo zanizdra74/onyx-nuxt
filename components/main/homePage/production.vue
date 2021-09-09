@@ -3,18 +3,23 @@
     <h1>Продукция</h1>
     <div id="container-slider-production" >
       <div class="variable-part-slider">
-      <div class="img-slider"></div>
+      <div class="img-slider">
+
+      </div>
       <div class="description-slider text-section-near-right-nav" style="color: #F5E144;">
-        <h2>Печи <br/>Полимеризации</h2>
-        <div class="dark-page-text text-description">Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.</div>
+        <h2 v-html="slider.banner"></h2>
+        <div class="dark-page-text text-description">
+            {{ slider.description }}
+        </div>
         <a href="#" style="color: inherit;">Подробнее ...</a>
       </div>
     </div>
     <ul id="nav-bottom-slider">
-      <li class="item-nav-bottom-slider">01</li>
-      <li class="item-nav-bottom-slider">02</li>
-      <li class="item-nav-bottom-slider">03</li>
-      <li class="item-nav-bottom-slider">04</li>
+      <li v-for="(itemHomeProduction, indexHomeProduction, index) in homeProduction" :key="indexHomeProduction"
+        class="item-nav-bottom-slider"
+        @click="triggerSlider(indexHomeProduction)">
+        {{ itemHomeProduction.numberSlider }}
+      </li>
     </ul>
     </div>
     <div id=""></div>
@@ -23,7 +28,71 @@
 
 <script>
     export default {
-        name: "production"
+        name: "production",
+        data() {
+          return{
+            slider: {
+              banner: '',
+              description: '',
+            },
+            homeProduction: [
+              {
+                name: 'oven',
+                numberSlider: 0,
+                urlPage: '',
+                banner: 'Печи<br>Полимеризации',
+                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+                urlImage: '',
+              },
+              {
+                name: 'spray',
+                numberSlider: 1,
+                urlPage: '',
+                banner: 'Электротехнические<br> шкафы',
+                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+                urlImage: '',
+              },
+              {
+                name: 'spray-2',
+                numberSlider: 2,
+                urlPage: '',
+                banner: 'Телекоммуникационное<br> оборудование',
+                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+                urlImage: '',
+              },
+              {
+                name: 'spray-3',
+                numberSlider: 3,
+                urlPage: '',
+                banner: 'Корпусные и<br> другие металлоизделия',
+                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+                urlImage: '',
+              },
+              {
+                name: 'welding',
+                numberSlider: 4,
+                urlPage: '',
+                banner: 'Cварочное<br> оборулоапние.',
+                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+                urlImage: '',
+              },
+            ],
+          }
+        },
+      props: {
+
+      },
+      mounted() {
+        this.slider.banner = this.homeProduction[0].banner;
+        this.slider.description = this.homeProduction[0].description;
+      },
+      methods: {
+        triggerSlider(index){
+          console.log('index==>', index)
+          this.slider.banner=this.homeProduction[index].banner
+          this.slider.description=this.homeProduction[index].description
+        }
+      }
     }
 </script>
 
@@ -62,6 +131,9 @@
   .text-description{
     height: 100%;
   }
+  .img-slider{
+    height: 80%;
+  }
   #nav-bottom-slider{
     display: flex;
     justify-content: center;
@@ -77,6 +149,7 @@
     text-decoration: none;
     padding: 15px;
     outline: 1px solid #F5E144;
+    color: #2D3A4B;
   }
   .item-nav-bottom-slider:hover, .item-nav-bottom-slider:active{
     background-color: #2D3A4B;

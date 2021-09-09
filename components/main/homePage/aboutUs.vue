@@ -7,6 +7,14 @@
         </div>
       </div>
       <div id="container-about-us-image">
+        <div id="outside-container-image">
+          <div id="img-about-us-top">
+            <img :src="aboutUsImg.top.src" :alt="aboutUsImg.top.alt"/>
+          </div>
+          <div id="img-about-us-bottom">
+            <img :src="aboutUsImg.bottom.src" :alt="aboutUsImg.bottom.alt"/>
+          </div>
+        </div>
         <svg  fill="none" preserveAspectRatio="xMinYMin slice" viewBox="0 0 1080 1080" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
           <rect width="630" height="630" fill="url(#pattern0)" fill-opacity="0.5"/>
           <defs>
@@ -22,7 +30,21 @@
 
 <script>
     export default {
-        name: "aboutUs"
+      name: "aboutUs",
+      data(){
+        return{
+          aboutUsImg: {
+            top: {
+              src:  require('~/assets/image/aboutUs/laser-top.png'),
+              alt: '',
+            },
+            bottom: {
+              src: require('~/assets/image/aboutUs/bottom-gibka.png'),
+              alt: '',
+            },
+          }
+        }
+      }
     }
 </script>
 
@@ -56,6 +78,7 @@
   #container-about-us-text{
     z-index: 23;
   }
+
   #container-about-us-image{
     z-index: 22;
     position: relative;
@@ -72,6 +95,32 @@
     left: -50px;
     position: relative;
   }
+  #outside-container-image{
+    position: absolute;
+    top: 100px;
+  }
+  #img-about-us-top{
+    position: absolute;
+    top: 100px;
+    left: 200px;
+    width: 300px;
+    height: 200px;
+    border-top: 5px solid #fff;
+    border-left: 5px solid #fff;
+    z-index: 2;
+  }
+  #img-about-us-top img{
+    width: 100%;
+  }
+  #img-about-us-bottom{
+    position: absolute;
+    top: -60px;
+    height: 300px;
+    z-index: 1;
+  }
+  #img-about-us-bottom img{
+    height: 100%;
+  }
   @media (max-width: 900px) {
 
     #section-about-us {
@@ -80,13 +129,74 @@
       grid-template-areas: 'text' 'image';
       padding-right: 150px;
     }
+    #outside-container-image{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: -50px;
+    }
+    #container-about-us-image{
+      margin-top: -25px;
+    }
     #container-about-us-image svg {
       width: 100%;
       height: 110%;
       max-width: 493px;
       max-height: 500px;
       top: -100px;
-      left: 100px;
+      left: 200px;
+    }
+    #container-about-us-image rect {
+      width: 900px;
+    }
+  }
+  @media (max-width: 767.97px) {
+    #section-about-us {
+      padding-right: 0;
+    }
+    #container-about-us-image{
+      margin-top: 0;
+    }
+    #container-about-us-image svg {
+      left: 0;
+    }
+    #container-about-us-image rect {
+      width: 800px;
+    }
+  }
+  @media (max-width: 575.97px) {
+    .section-main h1{
+      font-size: 48px;
+    }
+    #about-us-text{
+      font-size: 18px;
+    }
+    #container-about-us-image svg {
+      top: -50px;
+      left: 0;
+    }
+    #container-about-us-image rect {
+      height: 500px;
+    }
+  }
+  @media (max-width: 575.97px) {
+    #container-about-us-image svg {
+      top: -150px;
+    }
+  }
+  @media (max-width: 475.97px) {
+    .section-main h1{
+      font-size: 36px;
+    }
+    #about-us-text{
+      font-size: 16px;
+    }
+    #container-about-us-image svg {
+      top: -80px;
+    }
+    #container-about-us-image rect {
+      width: 700px;
+      height: 700px;
     }
   }
 </style>

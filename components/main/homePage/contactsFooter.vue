@@ -1,6 +1,7 @@
 <template>
   <section id="section-contact-footer" class="section-main">
     <div id="contact-form">
+      <hamburger-menu light-color-btn="dark" name-menu="homeNavMenu" />
       <h1>НАПИШИТЕ НАМ</h1>
       <form
         v-model="contactForm"
@@ -27,43 +28,53 @@
 
 <script>
   import footerMain from "../footerMain";
-    export default {
-        name: "contactsFooter",
-        components: {footerMain, },
-        data(){
-            return {
-                contactForm: {
-                    leadName: null,
-                    leadEmail: null,
-                    leadPhone: null,
-                    mailDescription: null,
-                },
-                validFolderForm: {
-                    leadName: {
-                        status: true,
-                        span: null,
-                    },
-                    leadEmail: {
-                        status: true,
-                        span: null,
-                    },
-                    leadPhone: {
-                        status: true,
-                        span: null,
-                    },
-                    mailDescription: {
-                        status: true,
-                        span: null,
-                    },
-                }
-            }
-        },
-        methods:{
-            actionSendMail(){
-                alert('Hi');
-            }
-        }
+  import hamburgerMenu from "../elements/hamburgerMenu";
+  export default {
+      name: "contactsFooter",
+      components: {footerMain, hamburgerMenu},
+      data(){
+          return {
+              contactForm: {
+                  leadName: null,
+                  leadEmail: null,
+                  leadPhone: null,
+                  mailDescription: null,
+              },
+              validFolderForm: {
+                  leadName: {
+                      status: true,
+                      span: null,
+                  },
+                  leadEmail: {
+                      status: true,
+                      span: null,
+                  },
+                  leadPhone: {
+                      status: true,
+                      span: null,
+                  },
+                  mailDescription: {
+                      status: true,
+                      span: null,
+                  },
+              }
+          }
+      },
+    mounted() {
+      $nuxt.$on('clickHamburgerMenu', something => {
+        if (something.nameMenu==='homeNavMenu'){ this.action(something.checked) }
+      });
+    },
+    methods:{
+      actionSendMail(){
+          alert('Hi');
+      },
+      action(something){
+        console.log('something->>->>')
+        console.log('something->>->>', something)
+      }
     }
+  }
 </script>
 <style scoped>
   #section-contact-footer{
