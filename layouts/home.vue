@@ -1,14 +1,14 @@
 <template>
-
-  <el-container>
+<!--  <el-container> -->
+  <div>
     <nuxt/>
-  </el-container>
-
+  </div>
+  <!--  </el-container> -->
 </template>
 
 <script>
     export default {
-        name: "home"
+        name: "layoutHome"
     }
 </script>
 

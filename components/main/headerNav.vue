@@ -14,14 +14,11 @@
               v-else
             >
           </div>
-
           <div class="chameleon-header-right">
             <hamburger-menu :see-hamburger-menu = showHamburgerMenu :dark-hamburger="darkLogo" v-if="showHamburgerMenu" />
           </div>
         </div>
-
       </div>
-
     </div>
 </template>
 

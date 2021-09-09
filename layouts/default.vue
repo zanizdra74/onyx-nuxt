@@ -4,10 +4,9 @@
       <header-navigation />
     </el-header>
     <el-main>
-
       <nuxt />
     </el-main>
-    <el-footer>Footer</el-footer>
+    <el-footer>1Footer</el-footer>
   </el-container>
 
 

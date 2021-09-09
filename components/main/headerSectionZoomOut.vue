@@ -1,16 +1,16 @@
 <template>
   <section class="bg-green chameleon-section">
     <header-nav dark-logo = "dark" :show-hamburger-menu="seeHamburger" />
-    <el-main class="chameleon-main">
+    <div class="chameleon-main">
       Main1
-    </el-main>
+    </div>
   </section>
 </template>
 
 <script>
-    export default {
-        name: "headerSectionZoomOut"
-    }
+  export default {
+    name: "headerSectionZoomOut"
+  }
 </script>
 
 <style scoped>
