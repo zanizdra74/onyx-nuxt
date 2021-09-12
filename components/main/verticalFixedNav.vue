@@ -264,7 +264,10 @@
       top: 8px;
       height: 16px;
       width: 16px;
-      background: url('../../assets/verticalNav/cd-nav-icons.svg') no-repeat;
+/*      background: url('../../assets/verticalNav/cd-nav-icons.svg') no-repeat;*/
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
       -webkit-transform: translateX(-50%) scale(0);
       -moz-transform: translateX(-50%) scale(0);
       -ms-transform: translateX(-50%) scale(0);
@@ -282,7 +285,9 @@
 
     .cd-vertical-nav li:first-of-type a::after{
       /* change icon using image sprites */
-      background-position: 0px -80px;
+      background-image: url('../../assets/icon/sideManu/home.png');
+
+/*      background-position: 0px -80px;*/
       /* fix bug with transitions - set scale(0.01) rather than scale(0) */
       -webkit-transform: translateX(-50%) translateY(7.5em) scale(0.01);
       -moz-transform: translateX(-50%) translateY(7.5em) scale(0.01);
@@ -298,7 +303,9 @@
       transform: translateX(-50%) translateY(7.5em) scale(0.25);
     }
     .cd-vertical-nav li:nth-of-type(2) a::after {
-      background-position: 0px -64px;
+      background-image: url('../../assets/icon/sideManu/aboutUs.png');
+
+/*      background-position: 0px -64px;*/
       -webkit-transform: translateX(-50%) translateY(4.5em) scale(0.01);
       -moz-transform: translateX(-50%) translateY(4.5em) scale(0.01);
       -ms-transform: translateX(-50%) translateY(4.5em) scale(0.01);
@@ -313,7 +320,8 @@
       transform: translateX(-50%) translateY(4.5em) scale(0.25);
     }
     .cd-vertical-nav li:nth-of-type(3) a::after {
-      background-position: 0px -48px;
+/*      background-position: 0px -48px;*/
+      background-image: url('../../assets/icon/sideManu/production.png');
       -webkit-transform: translateX(-50%) translateY(1.5em) scale(0.01);
       -moz-transform: translateX(-50%) translateY(1.5em) scale(0.01);
       -ms-transform: translateX(-50%) translateY(1.5em) scale(0.01);
@@ -329,7 +337,9 @@
       transform: translateX(-50%) translateY(1.5em) scale(0.25);
     }
     .cd-vertical-nav li:nth-of-type(4) a::after {
-      background-position: 0px -32px;
+      background-image: url('../../assets/icon/sideManu/advantages.png');
+
+      /*      background-position: 0px -32px;*/
       -webkit-transform: translateX(-50%) translateY(-1.5em) scale(0.01);
       -moz-transform: translateX(-50%) translateY(-1.5em) scale(0.01);
       -ms-transform: translateX(-50%) translateY(-1.5em) scale(0.01);
@@ -344,7 +354,9 @@
       transform: translateX(-50%) translateY(-1.5em) scale(0.25);
     }
     .cd-vertical-nav li:nth-of-type(5) a::after {
-      background-position: 0px -16px;
+      background-image: url('../../assets/icon/sideManu/reviews.png');
+
+/*      background-position: 0px -16px;*/
       -webkit-transform: translateX(-50%) translateY(-4.5em) scale(0.01);
       -moz-transform: translateX(-50%) translateY(-4.5em) scale(0.01);
       -ms-transform: translateX(-50%) translateY(-4.5em) scale(0.01);
@@ -359,6 +371,8 @@
       transform: translateX(-50%) translateY(-4.5em) scale(0.25);
     }
     .cd-vertical-nav li:nth-of-type(6) a::after {
+      background-image: url('../../assets/icon/sideManu/contacts.png');
+
       background-position: 0px 0px;
       -webkit-transform: translateX(-50%) translateY(-7.5em) scale(0.01);
       -moz-transform: translateX(-50%) translateY(-7.5em) scale(0.01);

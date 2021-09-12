@@ -3,97 +3,106 @@
     <h1>Продукция</h1>
     <div id="container-slider-production" >
       <div class="variable-part-slider">
-      <div class="img-slider">
-
-      </div>
-      <div class="description-slider text-section-near-right-nav" style="color: #F5E144;">
-        <h2 v-html="slider.banner"></h2>
-        <div class="dark-page-text text-description">
-            {{ slider.description }}
+        <div id="img-slider">
+          <img :src="slider.urlImage" alt="">
         </div>
-        <a href="#" style="color: inherit;">Подробнее ...</a>
+        <div id="text-description" class="description-slider text-section-near-right-nav" style="color: #F5E144;">
+          <h2 v-html="slider.banner"></h2>
+          <div class="dark-page-text text-description">
+              {{ slider.description }}
+          </div>
+          <a href="#" style="color: inherit;">Подробнее ...</a>
+        </div>
       </div>
-    </div>
-    <ul id="nav-bottom-slider">
-      <li v-for="(itemHomeProduction, indexHomeProduction, index) in homeProduction" :key="indexHomeProduction"
-        class="item-nav-bottom-slider"
-        @click="triggerSlider(indexHomeProduction)">
-        {{ itemHomeProduction.numberSlider }}
-      </li>
-    </ul>
+      <ul id="nav-bottom-slider">
+        <li v-for="(itemHomeProduction, indexHomeProduction) in homeProduction" :key="indexHomeProduction"
+          class="item-nav-bottom-slider"
+          @click="triggerSlider(indexHomeProduction)">
+          {{ itemHomeProduction.numberSlider }}
+        </li>
+      </ul>
     </div>
     <div id=""></div>
   </section>
 </template>
 
 <script>
-    export default {
-        name: "production",
-        data() {
-          return{
-            slider: {
-              banner: '',
-              description: '',
-            },
-            homeProduction: [
-              {
-                name: 'oven',
-                numberSlider: 0,
-                urlPage: '',
-                banner: 'Печи<br>Полимеризации',
-                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
-                urlImage: '',
-              },
-              {
-                name: 'spray',
-                numberSlider: 1,
-                urlPage: '',
-                banner: 'Электротехнические<br> шкафы',
-                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
-                urlImage: '',
-              },
-              {
-                name: 'spray-2',
-                numberSlider: 2,
-                urlPage: '',
-                banner: 'Телекоммуникационное<br> оборудование',
-                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
-                urlImage: '',
-              },
-              {
-                name: 'spray-3',
-                numberSlider: 3,
-                urlPage: '',
-                banner: 'Корпусные и<br> другие металлоизделия',
-                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
-                urlImage: '',
-              },
-              {
-                name: 'welding',
-                numberSlider: 4,
-                urlPage: '',
-                banner: 'Cварочное<br> оборулоапние.',
-                description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
-                urlImage: '',
-              },
-            ],
-          }
+  export default {
+    name: "production",
+    data() {
+      return{
+        slider: {
+          banner: '',
+          description: '',
+          urlImage: '',
+          altImage: '',
         },
-      props: {
+        homeProduction: [
+          {
+            name: 'oven',
+            numberSlider: 0,
+            urlPage: '',
+            banner: 'Печи<br>Полимеризации',
+            description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+            urlImage: require('~/assets/image/homePage/production/polymerizationFurnaces.jpg'),
+            altImage: '',
+          },
+          {
+            name: 'spray',
+            numberSlider: 1,
+            urlPage: '',
+            banner: 'Электротехнические<br> шкафы',
+            description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+            urlImage: require('~/assets/image/homePage/production/transportSystems.jpg'),
+            altImage: '',
+          },
+          {
+            name: 'spray-2',
+            numberSlider: 2,
+            urlPage: '',
+            banner: 'Телекоммуникационное<br> оборудование',
+            description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+            urlImage: require('~/assets/image/homePage/production/polymerizationFurnaces.jpg'),
+            altImage: '',
+          },
+          {
+            name: 'spray-3',
+            numberSlider: 3,
+            urlPage: '',
+            banner: 'Корпусные и<br> другие металлоизделия',
+            description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+            urlImage: require('~/assets/image/homePage/production/transportSystems.jpg'),
+            altImage: '',
+          },
+          {
+            name: 'welding',
+            numberSlider: 4,
+            urlPage: '',
+            banner: 'Cварочное<br> оборудование.',
+            description: 'Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi.',
+            urlImage: require('~/assets/image/homePage/production/polymerizationFurnaces.jpg'),
+            altImage: '',
+          },
+        ],
+      }
+    },
+    props: {
 
-      },
-      mounted() {
-        this.slider.banner = this.homeProduction[0].banner;
-        this.slider.description = this.homeProduction[0].description;
-      },
-      methods: {
-        triggerSlider(index){
-          console.log('index==>', index)
-          this.slider.banner=this.homeProduction[index].banner
-          this.slider.description=this.homeProduction[index].description
-        }
+    },
+    mounted() {
+      this.triggerSlider(0)
+    },
+    methods: {
+      triggerSlider(index){
+        console.log('index==>', index)
+        this.slider.banner=this.homeProduction[index].banner
+        this.slider.description=this.homeProduction[index].description
+        this.slider.urlImage=this.homeProduction[index].urlImage
+        this.slider.altImage=this.homeProduction[index].altImage
+
       }
     }
+  }
 </script>
 
 <style scoped>
@@ -107,6 +116,7 @@
 
   #section-production h1{
     text-align: right;
+    margin-bottom: 30px;
     /*
     color: rgba(245, 225, 68, 0.1);
      */
@@ -128,11 +138,16 @@
     flex-direction: column;
     height: 80%;
   }
-  .text-description{
+  #text-description {
     height: 100%;
+    margin-left: 30px;
   }
-  .img-slider{
+  #img-slider {
     height: 80%;
+    margin-right: 30px;
+  }
+  #img-slider img{
+    width: 100%;
   }
   #nav-bottom-slider{
     display: flex;

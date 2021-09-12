@@ -35,12 +35,12 @@
         return{
           aboutUsImg: {
             top: {
-              src:  require('~/assets/image/aboutUs/laser-top.png'),
-              alt: '',
+              src:  require('~/assets/image/homePage/aboutUs/laser-top.png'),
+              alt: 'лазерный раскрой',
             },
             bottom: {
-              src: require('~/assets/image/aboutUs/bottom-gibka.png'),
-              alt: '',
+              src: require('~/assets/image/homePage/aboutUs/bottom-gibka.png'),
+              alt: 'гибка листового металла',
             },
           }
         }

@@ -61,6 +61,18 @@ table {
   border-spacing: 0;
 }
 /*-------------------------------------------------------------------------------------*/
+
+body{
+  font-size: 14px;
+}
+h1{
+  font-size: 2rem;
+}
+.row{
+  display: flex;
+}
+
+
 .section-main{
   width: 992px;
   padding-top: 150px;
