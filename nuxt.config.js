@@ -17,7 +17,8 @@ module.exports = {
   },
   loading: { color: '#fff' },
   css: [
-    '@/assets/css/index.css'
+    '@/assets/css/index.css',
+    '@/assets/css/admin.css',
   ],
   plugins: [
     '@/plugins/globals'

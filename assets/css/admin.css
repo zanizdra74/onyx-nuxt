@@ -1,0 +1,51 @@
+#tab-elements{
+  width: 100%;
+  margin: 20px 0;
+}
+#tab-elements, #tab-elements th, #tab-elements td{
+  border: 1px solid #9e9e9e8a;
+  padding: 5px;
+}
+#tab-elements th{
+  line-height: 22px;
+}
+.td-button{
+    text-align: center;
+}
+
+/* Button style */
+.btn {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  color: #fff;
+  background-color: #2D3A4B;
+  height: 2rem;
+  padding: 0 20px;
+}
+.btn-primary{
+  color: #fff;
+  background-color: #2D3A4B;
+  border-color: #2D3A4B;
+}
+.btn-danger{
+  color: #fff;
+  background-color: #F50505FF;
+  border-color: #f50505;
+}
+.btn:hover {
+  cursor: pointer;
+  color: #F5E144;
+  border-color: #F5E144;
+}

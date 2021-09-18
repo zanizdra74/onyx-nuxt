@@ -1,19 +1,25 @@
 <template>
-  <div class="row layout-admin-wrap">
+  <div id="admin-page" class="row layout-admin-wrap">
     <div id="admin-sidebar">
       <nav id="admin-navbar" class="navbar">
+        <div id="container-admin-logo">
+          <img id="img-admin-logo" src="~/assets/onyx_lite.png" alt="onyx logo" />
+        </div>
         <ul class="navbar-nav">
           <li class="nav-item">
             <nuxt-link class="nav-link" to="/admin">Analytics</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="/admin/new-user">New User</nuxt-link>
+            <nuxt-link class="nav-link" to="/admin/users">Users</nuxt-link>
           </li>
           <li class="nav-item" v-on:click="showSubPages=!showSubPages">
             <nuxt-link class="nav-link" to="/admin/pages">Pages of Site</nuxt-link>
           </li>
           <li class="nav-item">
             <nuxt-link class="nav-link" to="/admin/news">News</nuxt-link>
+          </li>
+          <li class="nav-item">
+            <nuxt-link class="nav-link" to="/admin/settings">Settings</nuxt-link>
           </li>
           <li class="nav-item">
             <nuxt-link class="nav-link" to="/admin/logout">Logout</nuxt-link>
@@ -49,11 +55,13 @@ export default {
 </script>
 
 <style scoped>
+#admin-page{
+  font-family: Roboto-Regular;
+}
 .layout-admin-wrap {
   width: 100%;
   height: 100vh;
 }
-
 #admin-sidebar {
   padding: 0;
   background-color: #2D3A4B;
@@ -71,5 +79,21 @@ export default {
 #admin-main {
   width: 100%;
   padding: 20px;
+}
+#container-admin-logo{
+  height: 30px;
+  margin-bottom: 15px;
+}
+#img-admin-logo{
+  height: 100%;
+}
+.nav-item{
+  margin-bottom: 0.5rem;
+}
+#admin-sidebar .nav-item:hover a{
+  color: #F5E144
+}
+#admin-sidebar .nav-item a{
+text-decoration: none;
 }
 </style>

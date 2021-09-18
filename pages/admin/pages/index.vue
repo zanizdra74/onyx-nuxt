@@ -21,9 +21,17 @@ export default {
     showDeleteButton: false,
   }),
   mounted() {
+    let ap = this
     console.log('arrElements->', this.arrElements)
+//    this.$root.$emit("showSpinner");
+    $nuxt.$on('editElementsPage', slug => ap.openEditablePage(slug));
+  },
+  methods: {
+    openEditablePage(slug){
+      console.log('open page with slug=', slug)
+      $nuxt.$router.push({ path: '/admin/pages/' + slug })
+    }
   }
-
 }
 </script>
 

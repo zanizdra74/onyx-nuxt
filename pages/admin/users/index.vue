@@ -1,13 +1,12 @@
 <template>
   <main>
-    <h1>Admin Page</h1>
+    <h1>Users</h1>
   </main>
 </template>
 
 <script>
-import admin from "../../layouts/admin";
 export default {
-  name: "indexAdmin",
+  name: "indexAdminUsers",
   layout: "admin",
   async asyncData({store}) {
     /*

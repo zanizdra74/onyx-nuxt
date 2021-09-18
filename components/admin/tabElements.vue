@@ -16,7 +16,7 @@
       <td>{{ itemElements.name }}</td>
       <td>{{ itemElements.title }}</td>
       <td>{{ new Date(itemElements.date).toLocaleString() }}</td>
-      <td>
+      <td class="td-button">
         <button
           type="button"
           class="btn btn-primary"
@@ -26,7 +26,7 @@
           Edit
         </button>
       </td>
-      <td v-if="showDeleteButton">
+      <td class="td-button" v-if="showDeleteButton">
         <button
           type="submit"
           class="btn btn-danger"
@@ -48,7 +48,8 @@ export default {
     console.log('showDeleteButton-->', this.showDeleteButton)
   },
   methods: {
-    editElement: function(slug){
+    editElement(slug){
+      $nuxt.$emit('editElementsPage', slug);
 
     },
 //    deletePage(page._id)
@@ -57,11 +58,14 @@ export default {
 </script>
 
 <style scoped>
-
+/*
 #tab-elements{
   width: 100%;
+  margin: 20px 0;
 }
 #tab-elements, #tab-elements th, #tab-elements td{
   border: 1px solid #000;
+  padding: 5px;
 }
+ */
 </style>

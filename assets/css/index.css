@@ -71,7 +71,9 @@ h1{
 .row{
   display: flex;
 }
-
+.row-between{
+  justify-content: space-between;
+}
 
 .section-main{
   width: 992px;
