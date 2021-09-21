@@ -62,8 +62,9 @@ table {
 }
 /*-------------------------------------------------------------------------------------*/
 
-body{
+html, body{
   font-size: 14px;
+  font-family: Roboto-Regular;
 }
 h1{
   font-size: 2rem;

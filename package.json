@@ -17,6 +17,7 @@
     "element-ui": "^2.4.11",
     "express": "^4.16.4",
     "nuxt": "^2.0.0",
+    "nuxt-i18n": "^6.28.1",
     "nuxt-modernizr": "^2.0.8"
   },
   "devDependencies": {

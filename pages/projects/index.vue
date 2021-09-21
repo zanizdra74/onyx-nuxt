@@ -1,6 +1,6 @@
 <template>
   <main>
-    <h1>{{ $t('pages.aboutUs.title') }}</h1>
+    <h1>{{ $t('pages.products.title') }}</h1>
     <h2>Hello</h2>
   </main>
 

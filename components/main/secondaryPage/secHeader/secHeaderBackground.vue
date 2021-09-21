@@ -77,7 +77,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  font-size: 3rem;
+ /* font-size: 3rem;*/
   padding-left: 1rem;
   padding-right: 1rem;
   pointer-events: auto;
