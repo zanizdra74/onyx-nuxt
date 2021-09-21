@@ -4,7 +4,7 @@
       <div class="chameleon-header-block">
         <div class="container-logo">
           <img
-            src="~/assets/onyx_dark.png"
+            src="~/assets/onyx_lite.png"
             alt = "Logo Onyx"
           >
         </div>
