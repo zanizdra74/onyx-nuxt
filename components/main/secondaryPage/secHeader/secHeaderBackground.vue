@@ -4,7 +4,7 @@
       <div class="chameleon-header-block">
         <div class="container-logo">
           <img
-            src="~/assets/onyx_dark.png"
+            src="~/assets/onyx_lite.png"
             alt = "Logo Onyx"
           >
         </div>
@@ -77,7 +77,7 @@ export default {
   top: 0;
   left: 0;
   right: 0;
-  font-size: 3rem;
+ /* font-size: 3rem;*/
   padding-left: 1rem;
   padding-right: 1rem;
   pointer-events: auto;

@@ -2,9 +2,19 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <a href="#" class="nav-link hover-item-a">
-          Home
-        </a>
+        <nuxt-link :to="localePath('about-us')" class="nav-link hover-item-a"> {{ $t('pages.aboutUs.title') }}</nuxt-link>
+      </li>
+      <li class="nav-item">
+        <nuxt-link :to="localePath('projects')" class="nav-link hover-item-a"> {{ $t('pages.projects.title') }}</nuxt-link>
+      </li>
+      <li class="nav-item">
+        <nuxt-link :to="localePath('products')" class="nav-link hover-item-a"> {{ $t('pages.products.title') }}</nuxt-link>
+      </li>
+      <li class="nav-item">
+        <nuxt-link :to="localePath('articles')" class="nav-link hover-item-a"> {{ $t('pages.articles.title') }}</nuxt-link>
+      </li>
+      <li class="nav-item">
+        <nuxt-link :to="localePath('contacts')" class="nav-link hover-item-a"> {{ $t('pages.contacts.title') }}</nuxt-link>
       </li>
     </ul>
   </div>
@@ -22,5 +32,13 @@ export default {
 </script>
 
 <style scoped>
-
+.navbar-nav{
+  display: flex;
+  align-items: center;
+}
+.nav-link{
+  font-size: 1.3rem;
+  color: #fff;
+  margin: 0 1rem;
+}
 </style>

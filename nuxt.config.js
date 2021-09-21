@@ -32,6 +32,36 @@ module.exports = {
       'feature-detects': ['css/scrollbars', 'css/overflow-scrolling'],
         options: ['setClasses'],
     }],
+    ['nuxt-i18n', { detectBrowserLanguage: {
+        useCookie: true,
+        cookieKey: 'i18n_redirected',
+        alwaysRedirect: false,
+        fallbackLocale: 'en'
+      },
+      locales: [
+        {
+          name: 'Ukrainian',
+          code: 'ua',
+          iso: 'uk-UA',
+          file: 'uk-UA.js'
+        },
+        {
+          name: 'Russian',
+          code: 'ru',
+          iso: 'ru-RU',
+          file: 'ru-RU.js'
+        },
+        {
+          name: 'English',
+          code: 'en',
+          iso: 'en-US',
+          file: 'en-US.js'
+        },
+      ],
+      lazy: true,
+      langDir: 'lang/',
+      defaultLocale: 'ua',
+    }],
   ],
   axios: {
   },
