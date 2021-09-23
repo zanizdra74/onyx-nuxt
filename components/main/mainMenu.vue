@@ -2,6 +2,7 @@
   <section id="section-main-menu">
     <div id="button-close" class="menu__btn">
     </div>
+
     <ul class="menu__box" id="main-menu">
       <el-row>
         <el-col :xs="24" :sm="12" id="item-production" class="container-item-menu">

@@ -1,8 +1,8 @@
 <template>
-  <main>
+  <div class="content container">
     <h1>{{ $t('pages.products.title') }}</h1>
     <h2>Hello</h2>
-  </main>
+  </div>
 
 </template>
 
