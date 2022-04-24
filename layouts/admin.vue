@@ -7,22 +7,30 @@
         </div>
         <ul class="navbar-nav">
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="/admin">Analytics</nuxt-link>
+            <nuxt-link class="nav-link parent-link" to="/admin">Analytics</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="/admin/users">Users</nuxt-link>
+            <a class="nav-link parent-nav-link" href="" @click.prevent="showSubUsers=!showSubUsers">Users</a>
+            <ul v-if="showSubUsers" class="sub-nav-bar">
+              <li class="nav-item sub-nav-link">
+                <nuxt-link class="nav-link sub-link" to="/admin/users">Users</nuxt-link>
+              </li>
+              <li class="nav-item sub-nav-link">
+                <nuxt-link class="nav-link sub-link" to="/admin/users/createNewUser">Create User</nuxt-link>
+              </li>
+            </ul>
           </li>
           <li class="nav-item" v-on:click="showSubPages=!showSubPages">
-            <nuxt-link class="nav-link" to="/admin/pages">Pages of Site</nuxt-link>
+            <nuxt-link class="nav-link parent-link" to="/admin/pages">Pages of Site</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="/admin/news">News</nuxt-link>
+            <nuxt-link class="nav-link parent-link" to="/admin/news">News</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="/admin/settings">Settings</nuxt-link>
+            <nuxt-link class="nav-link parent-link" to="/admin/settings">Settings</nuxt-link>
           </li>
           <li class="nav-item">
-            <nuxt-link class="nav-link" to="/admin/logout">Logout</nuxt-link>
+            <nuxt-link class="nav-link parent-link" to="/admin/logout">Logout</nuxt-link>
           </li>
         </ul>
 
@@ -39,6 +47,7 @@ export default {
   data(){
     return{
       showSubPages: false,
+      showSubUsers: false,
     }
   },
   computed: {
@@ -65,6 +74,7 @@ export default {
 #admin-sidebar {
   padding: 0;
   background-color: #2D3A4B;
+  min-width: 150px;
 
 }
 #admin-sidebar a{
@@ -87,13 +97,22 @@ export default {
 #img-admin-logo{
   height: 100%;
 }
-.nav-item{
+.nav-item, .parent-nav-link{
   margin-bottom: 0.5rem;
 }
-#admin-sidebar .nav-item:hover a{
-  color: #F5E144
+.sub-nav-link{
+  padding-left: 10px;
+}
+/*
+.nav-item > a {
+  color: red;
+}
+ */
+#admin-sidebar .nav-item:hover .parent-link,
+#admin-sidebar .sub-nav-link:hover .sub-link{
+  color: #F5E144;
 }
 #admin-sidebar .nav-item a{
-text-decoration: none;
+  text-decoration: none;
 }
 </style>

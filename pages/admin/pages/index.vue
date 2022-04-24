@@ -13,8 +13,9 @@ export default {
   name: "indexAdminPages",
   components: {TabElements},
   layout: "admin",
+  middleware: ['admin-auth'],
   async asyncData({store}) {
-    const arrElements = store.getters["pagesSite/pagesSite"]
+    const arrElements = store.getters["adminPages/pagesSite"]
     return { arrElements }
   },
   data: ()=>({
@@ -29,7 +30,7 @@ export default {
   methods: {
     openEditablePage(slug){
       console.log('open page with slug=', slug)
-      $nuxt.$router.push({ path: '/admin/pages/' + slug })
+      $nuxt.$router.push({ path: '/admin/adminPages/' + slug })
     }
   }
 }

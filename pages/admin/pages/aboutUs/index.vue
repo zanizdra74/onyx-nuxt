@@ -6,6 +6,7 @@
 export default {
   name: "indexAdminPagesAboutUs",
   layout: "admin",
+  middleware: ['admin-auth'],
 }
 </script>
 

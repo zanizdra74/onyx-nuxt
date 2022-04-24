@@ -31,6 +31,8 @@
 <script>
     export default {
       name: "aboutUs",
+      props: [ 'imageAboutUsTop', 'imageAboutUsBottom', 'textAboutUsText' ],
+
       data(){
         return{
           aboutUsImg: {
@@ -42,8 +44,22 @@
               src: require('~/assets/image/homePage/aboutUs/bottom-gibka.png'),
               alt: 'гибка листового металла',
             },
-          }
+          },
+          text: null,
         }
+      },
+      mounted() {
+        /*
+        let url_image = '~/upload/adminPages/home/' + this.imageAboutUsTop.url
+        this.aboutUsImg.top.src = require(url_image)
+
+        this.aboutUsImg.top.alt = this.imageAboutUsTop.alt
+        url_image = '~/upload/adminPages/home/' + this.imageAboutUsBottom.url
+        this.aboutUsImg.bottom.src = require('~/upload/adminPages/home/' + this.imageAboutUsBottom.url)
+        this.aboutUsImg.bottom.alt = this.imageAboutUsBottom.alt
+        this.text = this.textAboutUsText
+*/
+        console.log('imageAboutUsBottom ->', this.imageAboutUsBottom)
       }
     }
 </script>

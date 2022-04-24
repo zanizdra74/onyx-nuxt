@@ -1,11 +1,15 @@
 
 module.exports = {
+
+  telemetry: false,
+
   mode: 'universal',
   /*
   ** Headers of the page
   */
   head: {
-    title: process.env.npm_package_nameNew || '',
+//    title: process.env.npm_package_nameNew || '',
+    title: 'SCC',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
@@ -28,6 +32,7 @@ module.exports = {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    "vue2-editor/nuxt",
     ['nuxt-modernizr',{
       'feature-detects': ['css/scrollbars', 'css/overflow-scrolling'],
         options: ['setClasses'],
@@ -61,7 +66,19 @@ module.exports = {
       lazy: true,
       langDir: 'lang/',
       defaultLocale: 'ua',
-    }],
+    },
+      'nuxt-fontawesome', {
+      imports: [
+        {
+          set: '@fortawesome/free-solid-svg-icons',
+          icons: ['fas']
+        },
+        {
+          set:'@fortawesome/free-brands-svg-icons',
+          icons: ['fab']
+        }
+      ]}
+    ],
   ],
   axios: {
   },

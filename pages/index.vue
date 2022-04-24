@@ -7,14 +7,19 @@
         <section id="index-section-header" class="bg-dark chameleon-section cd-section">
           <header-nav dark-logo = "light" :show-hamburger-menu="seeHamburger" />
           <div class="chameleon-main">
-            <zoom-out />
+            <zoom-out :image-header="contentHomePage.images.header.url" />
           </div>
         </section>
 
         <section id="index-section-about-us" class="bg-light chameleon-section cd-section">
           <header-nav class="chameleon-header" dark-logo = "dark" :show-hamburger-menu="seeHamburger" />
           <div class="chameleon-main container-section-main">
-            <about-us />
+            <about-us
+              :image-about-us-top = "contentHomePage.images.aboutUsTop"
+
+              :image-about-us-bottom = "contentHomePage.images.aboutUsBottom"
+              :text-about-us-text = "contentHomePage.text.aboutUs.text"
+            />
           </div>
         </section>
         <section id="index-section-production" class="bg-dark chameleon-section cd-section">
@@ -66,22 +71,38 @@ import advantages from "../components/main/homePage/advantages";
 import reviews from "../components/main/homePage/reviews";
 import contactsFooter from "../components/main/homePage/contactsFooter";
 export default {
-    layout: "home",
-    components: { headerNav, mainMenu, zoomOut, verticalFixedNav, aboutUs, advantages, production, reviews, contactsFooter },
-    data(){
-        return {
-            seeMainMenu: false,
-            seeHamburger: true,
-        }
-    },
-    mounted() {
-        $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something);
-        $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something);
-        $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
-    },
-    methods: {
+  layout: "home",
+  components: { headerNav, mainMenu, zoomOut, verticalFixedNav, aboutUs, advantages, production, reviews, contactsFooter },
+  contentHomePageStore: null,
 
-    }
+
+  async asyncData({store}) {
+    const contentHomePageStore = await store.getters["adminPages/contentHomePage"]
+    return { contentHomePageStore }
+  },
+  data(){
+      return {
+          seeMainMenu: false,
+          seeHamburger: true,
+        contentHomePage: null,
+      }
+  },
+  created() {
+    this.contentHomePage = this.contentHomePageStore;
+
+    console.log('contentHomePage.images.aboutUsBottom !!!!-->', this.contentHomePage.images.aboutUsBottom);
+  },
+  mounted() {
+      $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something);
+      $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something);
+      $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
+
+
+
+  },
+  methods: {
+
+  }
 }
 </script>
 

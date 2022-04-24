@@ -2,6 +2,46 @@
   <section id="section-main-menu">
     <div id="button-close" class="menu__btn">
     </div>
+    <div id="button-close-div" class="menu__btn" @click="closeMainMenu">
+      <span></span>
+    </div>
+    <ul class="menu-box" id="main-menu">
+      <li class="light-back block-nav-item">
+        <a class="menu-item" href="#">
+          <div class="in_menu__item">
+            <img src="~assets/icon/mainMenu/production.png" alt="production">
+            <span>Продукция</span>
+          </div>
+        </a>
+      </li>
+      <li  class="dark-back block-nav-item">
+        <a class="menu-item" href="#">
+          <div class="in_menu__item">
+            <img src="~assets/icon/mainMenu/projects.png" alt="projects">
+            <span>Проекты</span>
+          </div>
+        </a>
+      </li>
+      <li  class="light-back block-nav-item">
+        <a class="menu-item" href="#">
+          <div class="in_menu__item">
+            <img src="~assets/icon/mainMenu/about.png" alt="about us">
+            <span>О нас</span>
+          </div>
+        </a>
+      </li>
+      <li  class="dark-back block-nav-item">
+        <a class="menu-item" href="#">
+          <div class="in_menu__item">
+            <img src="~assets/icon/mainMenu/contacts.png" alt="contacts">
+            <span>Контакты</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+ <!--
+    <div id="button-close" class="menu__btn">
+    </div>
 
     <ul class="menu__box" id="main-menu">
       <el-row>
@@ -50,6 +90,7 @@
         </el-col>
       </el-row>
     </ul>
+    -->
   </section>
 
 </template>
@@ -86,6 +127,7 @@
   #main-menu{
     width: 100%;
     margin-top: 0;
+    display: flex;
   }
   #main-menu li img{
     height: 80px;
@@ -100,14 +142,17 @@
     justify-content: center;
     align-items: center;
   }
-  #item-projects, #item-about-us{
+  .dark-back, #item-projects, #item-about-us{
     background-color: rgba(98, 108, 117, 0.95);
   }
-  #item-production, #item-contacts{
+  .light-back,  #item-production, #item-contacts{
     background-color:  rgba(245, 225, 68, 0.95);
   }
 
-
+  .block-nav-item{
+    flex-grow: 1;
+    min-width: 50%;
+  }
   /* скрываем чекбокс */
   #menu__toggle {
     opacity: 0;

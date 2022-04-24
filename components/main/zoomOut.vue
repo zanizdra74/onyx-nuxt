@@ -11,7 +11,19 @@
 <script>
 export default {
   name: "zoomOut",
+  props: ['imageHeader'],
+  data: ()=>({
+    test: '',
+  }),
   mounted() {
+    console.log ('imageHeader zoomOut==>', this.imageHeader);
+    const introSectionJs = document.getElementById("cd-intro-background")
+    console.log(' introSectionJs = ', introSectionJs)
+
+
+    introSectionJs.style.setProperty("background", "url(/_nuxt/upload/adminPages/home/" + this.imageHeader + " )  no-repeat center center")
+
+
     var introSection = $('#cd-intro-background'),
       introSectionHeight = introSection.height(),
       //change scaleSpeed if you want to change the speed of the scale effect
@@ -156,7 +168,9 @@ Main components
   margin-right: 5%;
   width: 44px;
   height: 100%;
-  background: url("../../assets/cd-intro-background.jpg") no-repeat center center;
+/*  background: url("../../assets/cd-intro-background.jpg") no-repeat center center;*/
+
+  background: url("#") no-repeat center center;
   background-size: 44px 44px;
   cursor: pointer;
 }
@@ -180,7 +194,10 @@ Main components
 #cd-intro #cd-intro-background {
   height: 100%;
   width: 100%;
-  background: url("../../assets/cd-intro-background.jpg") no-repeat center center;
+
+  /*background: url("../../assets/cd-intro-background.jpg") no-repeat center center;*/
+  background: url("../../upload/pages/home/header_1234567890.jpg") no-repeat center center;
+
   background-size: cover;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
 }

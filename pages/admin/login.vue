@@ -1,34 +1,36 @@
 <template>
+  <section id="container-login-form" class="row row-center column-center">
+    <form class="login-box"
+          @submit.prevent="onSubmit"
+          :model="controls"
+          ref="form"
+    >
+      <h1>Login</h1>
+      <div class="form-group item-form" prop="login">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Login"
+          v-model.trim="controls.login"
+        >
+      </div>
+      <div class="form-group item-form" prop="password">
+        <input
+          type="password"
+          class="form-control"
+          placeholder="Password"
+          v-model.trim="controls.password"
+        >
+      </div>
+      <button
+        class="btn btn-primary item-form"
+        type="submit">
+        <!--:loading="loading">-->
+        Login
+      </button>
+    </form>
+  </section>
 
-  <form class="login-box"
-        @submit.prevent="onSubmit"
-        :model="controls"
-        ref="form"
-  >
-    <h1>Login</h1>
-    <div class="form-group" prop="login">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Login"
-        v-model.trim="controls.login"
-      >
-    </div>
-    <div class="form-group" prop="password">
-      <input
-        type="password"
-        class="form-control"
-        placeholder="Password"
-        v-model.trim="controls.password"
-      >
-    </div>
-    <button
-      class="btn btn-primary"
-      type="submit">
-<!--:loading="loading">-->
-      Login
-    </button>
-  </form>
 
 </template>
 
@@ -67,6 +69,7 @@
             login: this.controls.login,
             password: this.controls.password
           }
+          console.log('login form data -->', formData)
           await this.$store.dispatch('auth/login', formData)
           this.$router.push('/admin')
         } catch (e) {
@@ -87,8 +90,18 @@
 
 
 <style scoped>
+  #container-login-form{
+    margin-top: 20vh;
+  }
+  h1 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+  }
   .login-box{
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     width: 500px;
     box-sizing: border-box;
     border-radius: 10px;
@@ -97,5 +110,6 @@
     padding: 35px 25px 20px;
     position: relative;
   }
+
 
 </style>

@@ -50,7 +50,6 @@ export default {
   methods: {
     editElement(slug){
       $nuxt.$emit('editElementsPage', slug);
-
     },
 //    deletePage(page._id)
   },
