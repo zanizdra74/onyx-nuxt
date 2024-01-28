@@ -1,8 +1,8 @@
 <template>
-    <div class="container-header chameleon-container-header">
+    <div class="container-header chameleon-container-header" id="container-header">
       <div class="chameleon-inside-container-header liteNav" :class="{darkNav :darkLogo !== 'dark'}">
         <div class="chameleon-header-block">
-          <div class="container-logo">
+          <nuxt-link :to="localePath('/')" class="container-logo">
             <img
               src="~/assets/onyx_dark.png"
               alt = "Logo Onyx"
@@ -13,10 +13,17 @@
               alt = "Logo Onyx"
               v-else
             >
+          </nuxt-link>
+          <div class="chameleon-header-right" v-if="typeNavMenu==='line'">
+              <header-nav />
           </div>
-          <div class="chameleon-header-right">
-            <hamburger-menu :see-hamburger-menu = showHamburgerMenu :dark-hamburger="darkLogo" v-if="showHamburgerMenu" />
+          <div class="chameleon-header-right" v-else>
+            <hamburger-menu
+              :dark-hamburger="darkLogo"
+            />
+
           </div>
+
         </div>
       </div>
     </div>
@@ -24,14 +31,19 @@
 
 <script>
   import hamburgerMenu from "./hamburgerMenu";
+  import MainMenu from "./mainMenu";
+  import HeaderNav from "./elements/menus/headerNav";
     export default {
-        components: { hamburgerMenu },
-        props:[ 'darkLogo', "showHamburgerMenu"]
+        components: {HeaderNav, MainMenu, hamburgerMenu },
+        props:[ 'darkLogo', "showHamburgerMenu", "typeNavMenu", ]
 
     }
 </script>
 
-<style scoped>
+<style>
+  #container-header{
+    z-index: 10;
+  }
   .container-header{
     display: flex;
     justify-content: space-between;

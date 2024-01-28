@@ -2,19 +2,19 @@
   <div class="collapse navbar-collapse" id="navbarText">
     <ul class="navbar-nav">
       <li class="nav-item">
-        <nuxt-link :to="localePath('about-us')" class="nav-link hover-item-a"> {{ $t('adminPages.aboutUs.title') }}</nuxt-link>
+        <nuxt-link :to="localePath('about-us')" class="nav-link hover-item-a"> {{ $t('pages.aboutUs.title') }}</nuxt-link>
       </li>
       <li class="nav-item">
-        <nuxt-link :to="localePath('projects')" class="nav-link hover-item-a"> {{ $t('adminPages.projects.title') }}</nuxt-link>
+        <nuxt-link :to="localePath('projects')" class="nav-link hover-item-a"> {{ $t('pages.projects.title') }}</nuxt-link>
       </li>
       <li class="nav-item">
-        <nuxt-link :to="localePath('products')" class="nav-link hover-item-a"> {{ $t('adminPages.products.title') }}</nuxt-link>
+        <nuxt-link :to="localePath('products')" class="nav-link hover-item-a"> {{ $t('pages.products.title') }}</nuxt-link>
       </li>
       <li class="nav-item">
-        <nuxt-link :to="localePath('articles')" class="nav-link hover-item-a"> {{ $t('adminPages.articles.title') }}</nuxt-link>
+        <nuxt-link :to="localePath('articles')" class="nav-link hover-item-a"> {{ $t('pages.articles.title') }}</nuxt-link>
       </li>
       <li class="nav-item">
-        <nuxt-link :to="localePath('contacts')" class="nav-link hover-item-a"> {{ $t('adminPages.contacts.title') }}</nuxt-link>
+        <nuxt-link :to="localePath('contacts')" class="nav-link hover-item-a"> {{ $t('pages.contacts.title') }}</nuxt-link>
       </li>
     </ul>
   </div>
@@ -33,6 +33,10 @@ export default {
 
 <style scoped>
 .navbar-nav{
+  display: flex;
+  align-items: center;
+}
+.nav-item{
   display: flex;
   align-items: center;
 }

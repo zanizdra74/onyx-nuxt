@@ -1,6 +1,10 @@
 <template>
   <section id="cd-intro">
+<!--    <script async="true" src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+<!--
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+-->
+
     <div id="cd-intro-background"></div>
     <div id="cd-intro-tagline">
       <!--      <h1>Zoom-out Intro Effect</h1> -->
@@ -16,66 +20,62 @@ export default {
     test: '',
   }),
   mounted() {
-    console.log ('imageHeader zoomOut==>', this.imageHeader);
-    const introSectionJs = document.getElementById("cd-intro-background")
-    console.log(' introSectionJs = ', introSectionJs)
+    //change scaleSpeed if you want to change the speed of the scale effect
+    const scaleSpeed = 1
+    //change opacitySpeed if you want to change the speed of opacity reduction effect
+    const opacitySpeed = 1.6;
+    //update this value if you change this breakpoint in the style.css file (or _layout.scss if you use SASS)
+    const MQ = 600;
 
+    const introSectionJs = document.getElementById("cd-intro-background")
+    let introSectionHeight = introSectionJs.offsetHeight
 
     introSectionJs.style.setProperty("background", "url(/_nuxt/upload/adminPages/home/" + this.imageHeader + " )  no-repeat center center")
 
+    triggerAnimation();
 
-    var introSection = $('#cd-intro-background'),
-      introSectionHeight = introSection.height(),
-      //change scaleSpeed if you want to change the speed of the scale effect
-      scaleSpeed = 1,
-      //change opacitySpeed if you want to change the speed of opacity reduction effect
-      opacitySpeed = 1.6;
+    window.onresize = () => {
+      triggerAnimation();
+    }
 
-    //update this value if you change this breakpoint in the style.css file (or _layout.scss if you use SASS)
-    var MQ = 600;
-
-        triggerAnimation();
-        $(window).on('resize', function () {
-          triggerAnimation;
-        });
-
-        //bind the scale event to window scroll if window width > $MQ (unbind it otherwise)
-        function triggerAnimation() {
-          if ($(window).width() >= MQ) {
-            $(window).on('scroll', function () {
-              //The window.requestAnimationFrame() method tells the browser that you wish to perform an animation- the browser can optimize it so animations will be smoother
-              window.requestAnimationFrame(animateIntro);
-            });
-          } else {
-            $(window).off('scroll');
-          }
-        }
+    //bind the scale event to window scroll if window width > $MQ (unbind it otherwise)
+    function triggerAnimation() {
+      if (window.innerWidth >= MQ) {
+        window.onscroll = () => {
+          //The window.requestAnimationFrame() method tells the browser that you wish to perform an animation- the browser can optimize it so animations will be smoother
+          window.requestAnimationFrame(animateIntro);
+        };
+      } else {
+        console.log('scroll off')
+        //если не будет работать нужно будет ракоментировать jq $(window).on('scroll'
+//           $(window).off('scroll');
+      }
+    }
 
     //assign a scale transformation to the introSection element and reduce its opacity
     function animateIntro() {
-      var scrollPercentage = ($(window).scrollTop() / introSectionHeight).toFixed(5),
-        scaleValue = 1 - scrollPercentage * scaleSpeed;
-//                console.log (' scrollPercentage =  ', scrollPercentage);
-      //check if the introSection is still visible
-      if ($(window).scrollTop() < introSectionHeight) {
-        introSection.css({
-          '-moz-transform': 'scale(' + scaleValue + ') translateZ(0)',
-          '-webkit-transform': 'scale(' + scaleValue + ') translateZ(0)',
-          '-ms-transform': 'scale(' + scaleValue + ') translateZ(0)',
-          '-o-transform': 'scale(' + scaleValue + ') translateZ(0)',
-          'transform': 'scale(' + scaleValue + ') translateZ(0)',
-          'opacity': 1 - scrollPercentage * opacitySpeed
+      let c = document.getElementById("index-section-header").getBoundingClientRect()
+      let scrollTopDist = - c.top
+      let scrollPercentage = (scrollTopDist / introSectionHeight).toFixed(5)
+      let  scaleValue = 1 - scrollPercentage * scaleSpeed;
 
-        });
+      //check if the introSection is still visible
+      if (scrollTopDist < introSectionHeight) {
+        introSectionJs.style.setProperty('-moz-transform', 'scale(' + scaleValue + ') translateZ(0)')
+        introSectionJs.style.setProperty('-webkit-transform', 'scale(' + scaleValue + ') translateZ(0)')
+        introSectionJs.style.setProperty('-ms-transform', 'scale(' + scaleValue + ') translateZ(0)')
+        introSectionJs.style.setProperty('-o-transform','scale(' + scaleValue + ') translateZ(0)')
+        introSectionJs.style.setProperty('transform','scale(' + scaleValue + ') translateZ(0)')
+        introSectionJs.style.setProperty('opacity', 1 - scrollPercentage * opacitySpeed)
       }
     }
 
     /********************************
      open/close submenu on mobile
      ********************************/
-    $('.cd-main-nav').on('click', function (event) {
+/*    $('.cd-main-nav').on('click', function (event) {
       if ($(event.target).is('.cd-main-nav')) $(this).children('ul').toggleClass('is-visible');
-    });
+    });*/
   }
 }
 </script>
@@ -162,19 +162,22 @@ Main components
     margin: 23px 0 0 5%;
   }
 }
+/*
 
 .cd-main-nav {
   float: right;
   margin-right: 5%;
   width: 44px;
   height: 100%;
-/*  background: url("../../assets/cd-intro-background.jpg") no-repeat center center;*/
+!*  background: url("../../assets/cd-intro-background.jpg") no-repeat center center;*!
 
   background: url("#") no-repeat center center;
   background-size: 44px 44px;
   cursor: pointer;
 }
+*/
 
+/*
 @media only screen and (min-width: 768px) {
   .cd-main-nav {
     width: auto;
@@ -183,20 +186,22 @@ Main components
     cursor: auto;
   }
 }
+*/
 
 #cd-intro {
   position: relative;
   height: 100vh;
   margin-top: 70px;
-  z-index: 1;
 }
 
 #cd-intro #cd-intro-background {
   height: 100%;
   width: 100%;
 
-  /*background: url("../../assets/cd-intro-background.jpg") no-repeat center center;*/
+  background: url("../../assets/cd-intro-background.jpg") no-repeat center center;
+/*
   background: url("../../upload/pages/home/header_1234567890.jpg") no-repeat center center;
+*/
 
   background-size: cover;
   box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);

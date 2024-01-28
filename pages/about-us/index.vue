@@ -1,6 +1,6 @@
 <template>
-  <div class="content">
-    <h1>{{ $t('adminPages.aboutUs.title') }}</h1>
+  <div class="content container">
+    <h1>{{ $t('pages.aboutUs.title') }}</h1>
     <h2>Hello</h2>
   </div>
 

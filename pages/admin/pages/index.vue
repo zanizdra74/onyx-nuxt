@@ -30,7 +30,7 @@ export default {
   methods: {
     openEditablePage(slug){
       console.log('open page with slug=', slug)
-      $nuxt.$router.push({ path: '/admin/adminPages/' + slug })
+      $nuxt.$router.push({ path: '/admin/pages/' + slug })
     }
   }
 }

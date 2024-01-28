@@ -1,30 +1,48 @@
 <template>
   <div class="hamburger-menu">
     <input id="menu__toggle" type="checkbox" />
-    <label class="menu__btn" :class="{menu__btn_lite: darkHamburger==='dark'?false:true}" for="menu__toggle" @click="visibleMainMenu(seeMainMenu)">
+    <label class="menu__btn"
+       :class="{menu__btn_lite: darkHamburger==='dark'?false:true}"
+       for="menu__toggle"
+       @click="clickButton"
+       v-if="seeHamburger"
+    >
       <span></span>
     </label>
+    <main-menu v-if="seeMainMenu"  />
   </div>
 </template>
 
 <script>
   // Created by https://medium.com/@krokhin.ezh/%D0%BA%D0%B0%D0%BA-%D1%81%D0%BE%D0%B7%D0%B4%D0%B0%D1%82%D1%8C-%D0%B3%D0%B0%D0%BC%D0%B1%D1%83%D1%80%D0%B3%D0%B5%D1%80-%D0%BC%D0%B5%D0%BD%D1%8E-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D1%83%D1%8F-%D1%82%D0%BE%D0%BB%D1%8C%D0%BA%D0%BE-css-%D0%B8-html-c6abf7c32c6d
-    export default {
-        name: "hamburgerMenu",
-        props: ["seeHamburgerMenu", "darkHamburger", ],
-        data(){
-          return {
-              seeMainMenu: false,
-          }
-        },
-        methods: {
-            visibleMainMenu(flagSeeMenu){
-                this.seeMainMenu = !flagSeeMenu;
-                $nuxt.$emit('labelShowMainMenu', this.seeMainMenu);
-                $nuxt.$emit('labelShowHamburgerMenu', false);
-            }
-        }
+    import MainMenu from "./mainMenu";
+  export default {
+    name: "hamburgerMenu",
+    components: {MainMenu},
+    props: [/*"seeHamburgerMenu",*/ "darkHamburger", ],
+    data(){
+      return {
+        seeMainMenu: false,
+        seeHamburger: true,
+      }
+    },
+    mounted() {
+      $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something);
+      $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something);
+      $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
+    },
+    methods: {
+      clickButton(){
+        this.seeMainMenu=!this.seeMainMenu;
+        this.seeHamburger=false;
+      },
+/*      visibleMainMenu(flagSeeMenu){
+        this.seeMainMenu = !flagSeeMenu;
+        $nuxt.$emit('labelShowMainMenu', this.seeMainMenu);
+        $nuxt.$emit('labelShowHamburgerMenu', false);
+      }*/
     }
+  }
 </script>
 
 <style scoped>

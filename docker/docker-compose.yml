@@ -1,0 +1,36 @@
+version: '3.3'
+services:
+  my-nuxt-app:
+    build:
+      context: ./..
+      dockerfile: ./docker/Dockerfile
+    container_name: my-nuxt-app
+    restart: unless-stopped
+    volumes:
+      - ./../:/app
+      - /node_modules
+    ports:
+      - 3000:3000
+    command: ["npm", "run", "dev"]
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    depends_on:
+      - mongo
+  mongo:
+    # Official mongo image from docker.hub
+    image: mongo
+    environment:
+      # Username for the mongo database
+      - MONGO_INITDB_ROOT_USERNAME=mern
+      # Password for the mongo database
+      - MONGO_INITDB_ROOT_PASSWORD=merndocker
+    volumes:
+      # <nameOfVolume>:<directorInDocker>
+      - mongoDB:/data/db
+
+# Making the node service volume accessible to other services.
+volumes:
+  # Declaring the node service volume.
+  nodeVolume:
+  # Making the volume accessible by other containers
+  mongoDB:

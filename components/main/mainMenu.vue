@@ -6,93 +6,40 @@
       <span></span>
     </div>
     <ul class="menu-box" id="main-menu">
-      <li class="light-back block-nav-item">
-        <a class="menu-item" href="#">
+      <li class="light-back block-nav-item" @click="closeMainMenu">
+        <nuxt-link :to="localePath('products')" class="menu-item">
           <div class="in_menu__item">
             <img src="~assets/icon/mainMenu/production.png" alt="production">
-            <span>Продукция</span>
+            <span class="text-menu">{{ $t('pages.products.title') }}</span>
           </div>
-        </a>
+        </nuxt-link>
       </li>
-      <li  class="dark-back block-nav-item">
-        <a class="menu-item" href="#">
+      <li class="dark-back block-nav-item" @click="closeMainMenu">
+        <nuxt-link :to="localePath('projects')" class="menu-item" >
           <div class="in_menu__item">
             <img src="~assets/icon/mainMenu/projects.png" alt="projects">
-            <span>Проекты</span>
+            <span class="text-menu"> {{ $t('pages.projects.title') }}</span>
           </div>
-        </a>
+        </nuxt-link>
       </li>
-      <li  class="light-back block-nav-item">
-        <a class="menu-item" href="#">
+      <li class="dark-back block-nav-item" @click="closeMainMenu">
+        <nuxt-link :to="localePath('about-us')" class="menu-item" >
           <div class="in_menu__item">
             <img src="~assets/icon/mainMenu/about.png" alt="about us">
-            <span>О нас</span>
+            <span class="text-menu">{{ $t('pages.aboutUs.title') }}</span>
           </div>
-        </a>
+        </nuxt-link>
       </li>
-      <li  class="dark-back block-nav-item">
-        <a class="menu-item" href="#">
+      <li class="light-back block-nav-item" @click="closeMainMenu">
+        <nuxt-link :to="localePath('contacts')" class="menu-item">
           <div class="in_menu__item">
             <img src="~assets/icon/mainMenu/contacts.png" alt="contacts">
-            <span>Контакты</span>
+            <span class="text-menu"> {{ $t('pages.contacts.title') }}</span>
           </div>
-        </a>
+        </nuxt-link>
       </li>
     </ul>
- <!--
-    <div id="button-close" class="menu__btn">
-    </div>
-
-    <ul class="menu__box" id="main-menu">
-      <el-row>
-        <el-col :xs="24" :sm="12" id="item-production" class="container-item-menu">
-          <div id="button-close-div" class="menu__btn" @click="closeMainMenu">
-            <span></span>
-          </div>
-          <li>
-            <a class="menu__item" href="#">
-              <div class="in_menu__item">
-                <img src="~assets/icon/mainMenu/production.png" alt="production">
-                <span>Продукция</span>
-              </div>
-            </a>
-          </li>
-        </el-col>
-        <el-col :xs="24" :sm="12" id="item-projects" class="container-item-menu bg-grey">
-          <li>
-            <a class="menu__item" href="#">
-              <div class="in_menu__item">
-                <img src="~assets/icon/mainMenu/projects.png" alt="projects">
-                <span>Проекты</span>
-              </div>
-            </a>
-          </li>
-        </el-col>
-        <el-col :xs="24" :sm="12" id="item-about-us" class="container-item-menu bg-grey">
-          <li>
-            <a class="menu__item" href="#">
-              <div class="in_menu__item">
-                <img src="~assets/icon/mainMenu/about.png" alt="about us">
-                <span>О нас</span>
-              </div>
-            </a>
-          </li>
-        </el-col>
-        <el-col :xs="24" :sm="12" id="item-contacts" class="container-item-menu bg-yellow">
-          <li>
-            <a class="menu__item" href="#">
-              <div class="in_menu__item">
-                <img src="~assets/icon/mainMenu/contacts.png" alt="contacts">
-                <span>Контакты</span>
-              </div>
-            </a>
-          </li>
-        </el-col>
-      </el-row>
-    </ul>
-    -->
   </section>
-
 </template>
 
 <script>
@@ -128,6 +75,7 @@
     width: 100%;
     margin-top: 0;
     display: flex;
+    flex-wrap: wrap;
   }
   #main-menu li img{
     height: 80px;
@@ -135,6 +83,8 @@
   .in_menu__item{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
   .container-item-menu{
     height: 50vh;
@@ -143,17 +93,51 @@
     align-items: center;
   }
   .dark-back, #item-projects, #item-about-us{
-    background-color: rgba(98, 108, 117, 0.95);
+    background-color: rgba(98, 108, 117, 0.90);
   }
   .light-back,  #item-production, #item-contacts{
-    background-color:  rgba(245, 225, 68, 0.95);
+    background-color:  rgba(245, 225, 68, 0.90);
+  }
+  .dark-back:hover{
+    background-color: rgba(98, 108, 117, 1);
+  }
+  .light-back:hover{
+    background-color:  rgba(245, 225, 68, 1);
   }
 
   .block-nav-item{
-    flex-grow: 1;
-    min-width: 50%;
+/*    flex-grow: 1;
+    min-width: 50%;*/
+/*    display: flex;
+    align-items: center;
+    justify-content: center;*/
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50%;
+
   }
-  /* скрываем чекбокс */
+  .menu-item{
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-menu {
+    margin-top: 15px;
+    font-family: Roboto-Regular;
+    text-align: center;
+    font-size: 1.8rem;
+  }
+  .light-back .text-menu {
+    color: rgba(98, 108, 117, 0.95);
+  }
+  .dark-back .text-menu {
+    color: rgba(245, 225, 68, 0.95);
+  }
+
+    /* скрываем чекбокс */
   #menu__toggle {
     opacity: 0;
   }
@@ -199,6 +183,7 @@
     content: '';
     top: 1px;
   }
+
   /* Open/close menu*/
   /*
   #menu__toggle:checked ~ .menu__btn > span {

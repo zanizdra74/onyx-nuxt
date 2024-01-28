@@ -5,14 +5,18 @@
     <div class="container-flex">
       <div class="container-col">
         <section id="index-section-header" class="bg-dark chameleon-section cd-section">
-          <header-nav dark-logo = "light" :show-hamburger-menu="seeHamburger" />
+          <header-nav dark-logo = "light" :show-hamburger-menu="seeHamburger" type-nav-menu="hamburger"/>
           <div class="chameleon-main">
             <zoom-out :image-header="contentHomePage.images.header.url" />
           </div>
         </section>
 
         <section id="index-section-about-us" class="bg-light chameleon-section cd-section">
-          <header-nav class="chameleon-header" dark-logo = "dark" :show-hamburger-menu="seeHamburger" />
+          <header-nav
+            class="chameleon-header"
+            dark-logo = "dark"
+            type-nav-menu="hamburger"
+          />
           <div class="chameleon-main container-section-main">
             <about-us
               :image-about-us-top = "contentHomePage.images.aboutUsTop"
@@ -23,46 +27,57 @@
           </div>
         </section>
         <section id="index-section-production" class="bg-dark chameleon-section cd-section">
-          <header-nav class="chameleon-header" dark-logo = "light" :show-hamburger-menu="seeHamburger" />
+          <header-nav
+            class="chameleon-header"
+            dark-logo = "light"
+            type-nav-menu="hamburger"
+          />
           <div class="chameleon-main container-section-main">
             <production />
           </div>
         </section>
         <section id="index-section-advantages" class="bg-light chameleon-section cd-section">
-          <header-nav class="chameleon-header" dark-logo = "dark" :show-hamburger-menu="seeHamburger" />
+          <header-nav
+            class="chameleon-header"
+            dark-logo = "dark"
+            type-nav-menu="hamburger"
+          />
           <div class="chameleon-main container-section-main">
             <advantages />
           </div>
         </section>
         <section id="index-section-reviews" class="bg-dark chameleon-section cd-section">
-          <header-nav class="chameleon-header" dark-logo = "light" :show-hamburger-menu="seeHamburger" />
+          <header-nav
+            class="chameleon-header"
+            dark-logo = "light"
+            type-nav-menu="hamburger"
+          />
           <div class="chameleon-main container-section-main">
             <reviews />
           </div>
         </section>
         <section id="index-section-contacts-footer" class="bg-light chameleon-section cd-section">
-          <header-nav class="chameleon-header" dark-logo = "dark" :show-hamburger-menu="seeHamburger" />
+          <header-nav
+            class="chameleon-header"
+            dark-logo = "dark"
+            type-nav-menu="hamburger"
+          />
           <div id="container-main-contact-footer" class="chameleon-main container-section-main">
             <contacts-footer />
           </div>
         </section>
       </div>
-      <main-menu v-if="seeMainMenu"  />
+<!--      <main-menu v-if="seeMainMenu"  />-->
     </div>
 <!--    <el-footer class="bg-dark">Footer</el-footer>-->
   </div>
 <!--  </el-container> -->
 
-<!--
-  <div class="container">
-  Hi! It's My first page
-  </div>
-  -->
 </template>
 
 <script>
 import headerNav from "~/components/main/headerNav";
-import mainMenu from "~/components/main/mainMenu";
+// import mainMenu from "~/components/main/mainMenu";
 import zoomOut from "../components/main/zoomOut";
 import verticalFixedNav from "../components/main/verticalFixedNav";
 import aboutUs from "../components/main/homePage/aboutUs";
@@ -72,7 +87,7 @@ import reviews from "../components/main/homePage/reviews";
 import contactsFooter from "../components/main/homePage/contactsFooter";
 export default {
   layout: "home",
-  components: { headerNav, mainMenu, zoomOut, verticalFixedNav, aboutUs, advantages, production, reviews, contactsFooter },
+  components: { headerNav, zoomOut, verticalFixedNav, aboutUs, advantages, production, reviews, contactsFooter },
   contentHomePageStore: null,
 
 
@@ -82,8 +97,8 @@ export default {
   },
   data(){
       return {
-          seeMainMenu: false,
-          seeHamburger: true,
+//          seeMainMenu: false,
+//          seeHamburger: true,
         contentHomePage: null,
       }
   },
@@ -92,14 +107,14 @@ export default {
 
     console.log('contentHomePage.images.aboutUsBottom !!!!-->', this.contentHomePage.images.aboutUsBottom);
   },
-  mounted() {
+/*  mounted() {
       $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something);
       $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something);
       $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
 
 
 
-  },
+  },*/
   methods: {
 
   }
@@ -141,7 +156,7 @@ export default {
     padding-right: 1rem;
     font-size: 1rem;
 /*    padding-top: 4rem;*/
-    z-index: 10;
+    z-index: 9;
   }
   .container-section-main {
     display: flex;
