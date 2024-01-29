@@ -5,14 +5,37 @@
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       -->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
-
       <ul>
-        <li><a href="#index-section-header" class="active link-vert-nav" data-nav="index-section-header"><span class="label">Вверх</span></a></li>
-        <li><a href="#index-section-about-us" class="link-vert-nav" data-nav="index-section-about-us"><span class="label">О нас</span></a></li>
-        <li><a href="#index-section-production" class="link-vert-nav" data-nav="index-section-production"><span class="label">Продукция</span></a></li>
-        <li><a href="#index-section-advantages" class="link-vert-nav" data-nav="index-section-advantages"><span class="label">Выгоды</span></a></li>
-        <li><a href="#index-section-reviews" class="link-vert-nav" data-nav="index-section-reviews"><span class="label">Отзывы</span></a></li>
-        <li><a href="#index-section-contacts-footer" class="link-vert-nav" data-nav="index-section-contacts-footer"><span class="label">Контакты</span></a></li>
+        <li>
+          <a href="#index-section-header" class="active link-vert-nav" data-nav="index-section-header">
+            <span class="label">{{ $t('homeSections.home.title') }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="#index-section-about-us" class="link-vert-nav" data-nav="index-section-about-us">
+            <span class="label">{{ $t('homeSections.about.title') }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="#index-section-production" class="link-vert-nav" data-nav="index-section-production">
+            <span class="label">{{ $t('homeSections.production.title') }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="#index-section-advantages" class="link-vert-nav" data-nav="index-section-advantages">
+            <span class="label">{{ $t('homeSections.benefits.title') }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="#index-section-reviews" class="link-vert-nav" data-nav="index-section-reviews">
+            <span class="label">{{ $t('homeSections.reviews.title') }}</span>
+          </a>
+        </li>
+        <li>
+          <a href="#index-section-contacts-footer" class="link-vert-nav" data-nav="index-section-contacts-footer">
+            <span class="label">{{ $t('homeSections.contacts.title') }}</span>
+          </a>
+        </li>
       </ul>
 
     </nav><!-- .cd-vertical-nav -->

@@ -20,4 +20,24 @@ export default {
       title: 'Контакти'
     },
   },
+  homeSections: {
+    home: {
+      title: 'Вгору',
+    },
+    about: {
+      title: 'О нас',
+    },
+    production: {
+      title: 'Товари',
+    },
+    benefits: {
+      title: 'Выгоди',
+    },
+    reviews: {
+      title: 'Отзывы',
+    },
+    contacts: {
+      title: 'Контакті',
+    },
+  },
 }

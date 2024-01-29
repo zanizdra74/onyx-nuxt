@@ -20,4 +20,24 @@ export default {
       title: 'Contacts'
     },
   },
+  homeSections: {
+    home: {
+      title: 'Top',
+    },
+    about: {
+      title: 'About',
+    },
+    production: {
+      title: 'Production',
+    },
+    benefits: {
+      title: 'Benefits',
+    },
+    reviews: {
+      title: 'Reviews',
+    },
+    contacts: {
+      title: 'Contacts',
+    },
+  },
 }
