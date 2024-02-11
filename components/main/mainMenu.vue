@@ -1,5 +1,5 @@
 <template>
-  <section id="section-main-menu">
+  <section id="section-main-menu" :class="visibleMainMenu ? 'section-active' : 'section-none-active'">
     <div id="button-close" class="menu__btn">
     </div>
     <div id="button-close-div" class="menu__btn" @click="closeMainMenu">
@@ -45,7 +45,7 @@
 <script>
   export default {
     name: "mainMenu",
-    props: ['visibleMainMenu'],
+    props: ['visibleMainMenu', ],
     data(){
       return {
           //                visibleMainMenu: false,
@@ -63,7 +63,10 @@
 <style scoped>
   #section-main-menu{
     position: fixed;
-    display: flex;
+/*    display: flex; */
+/*
+    display: none;
+*/
     top:0;
     right:0;
     bottom: 0;
@@ -71,8 +74,18 @@
     width: 50vw;
     z-index: 101;
   }
+  .section-none-active{
+    /*display: none;*/
+    transform: translateX(100%);
+    transition: .5s;
+  }
+  .section-active{
+    transform: translateX(0);
+    transition: .5s;
+  }
   #main-menu{
     width: 100%;
+    height: 100%;
     margin-top: 0;
     display: flex;
     flex-wrap: wrap;

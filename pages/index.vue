@@ -5,7 +5,10 @@
     <div class="container-flex">
       <div class="container-col">
         <section id="index-section-header" class="bg-dark chameleon-section cd-section">
-          <header-nav dark-logo = "light" :show-hamburger-menu="seeHamburger" type-nav-menu="hamburger"/>
+          <header-nav dark-logo = "light"
+            :show-hamburger-menu="!seeMainMenu"
+            type-nav-menu="hamburger"
+          />
           <div class="chameleon-main">
             <zoom-out :image-header="contentHomePage.images.header.url" />
           </div>
@@ -15,6 +18,7 @@
           <header-nav
             class="chameleon-header"
             dark-logo = "dark"
+            :show-hamburger-menu="!seeMainMenu"
             type-nav-menu="hamburger"
           />
           <div class="chameleon-main container-section-main">
@@ -30,6 +34,7 @@
           <header-nav
             class="chameleon-header"
             dark-logo = "light"
+            :show-hamburger-menu="!seeMainMenu"
             type-nav-menu="hamburger"
           />
           <div class="chameleon-main container-section-main">
@@ -40,6 +45,7 @@
           <header-nav
             class="chameleon-header"
             dark-logo = "dark"
+            :show-hamburger-menu="!seeMainMenu"
             type-nav-menu="hamburger"
           />
           <div class="chameleon-main container-section-main">
@@ -50,6 +56,7 @@
           <header-nav
             class="chameleon-header"
             dark-logo = "light"
+            :show-hamburger-menu="!seeMainMenu"
             type-nav-menu="hamburger"
           />
           <div class="chameleon-main container-section-main">
@@ -60,6 +67,7 @@
           <header-nav
             class="chameleon-header"
             dark-logo = "dark"
+            :show-hamburger-menu="!seeMainMenu"
             type-nav-menu="hamburger"
           />
           <div id="container-main-contact-footer" class="chameleon-main container-section-main">
@@ -67,17 +75,22 @@
           </div>
         </section>
       </div>
-<!--      <main-menu v-if="seeMainMenu"  />-->
+      <main-menu :visible-main-menu="seeMainMenu" />
     </div>
 <!--    <el-footer class="bg-dark">Footer</el-footer>-->
   </div>
 <!--  </el-container> -->
 
+<!--
+  <div class="container">
+  Hi! It's My first page
+  </div>
+  -->
 </template>
 
 <script>
 import headerNav from "~/components/main/headerNav";
-// import mainMenu from "~/components/main/mainMenu";
+import mainMenu from "~/components/main/mainMenu";
 import zoomOut from "../components/main/zoomOut";
 import verticalFixedNav from "../components/main/verticalFixedNav";
 import aboutUs from "../components/main/homePage/aboutUs";
@@ -87,7 +100,7 @@ import reviews from "../components/main/homePage/reviews";
 import contactsFooter from "../components/main/homePage/contactsFooter";
 export default {
   layout: "home",
-  components: { headerNav, zoomOut, verticalFixedNav, aboutUs, advantages, production, reviews, contactsFooter },
+  components: { headerNav, mainMenu, zoomOut, verticalFixedNav, aboutUs, advantages, production, reviews, contactsFooter },
   contentHomePageStore: null,
 
 
@@ -97,8 +110,8 @@ export default {
   },
   data(){
       return {
-//          seeMainMenu: false,
-//          seeHamburger: true,
+          seeMainMenu: false,
+          seeHamburger: true,
         contentHomePage: null,
       }
   },
@@ -107,14 +120,14 @@ export default {
 
     console.log('contentHomePage.images.aboutUsBottom !!!!-->', this.contentHomePage.images.aboutUsBottom);
   },
-/*  mounted() {
+  mounted() {
       $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something);
       $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something);
-      $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
+//      $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
 
 
 
-  },*/
+  },
   methods: {
 
   }

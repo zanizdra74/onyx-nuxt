@@ -19,6 +19,7 @@
           </div>
           <div class="chameleon-header-right" v-else>
             <hamburger-menu
+              v-if="showHamburgerMenu"
               :dark-hamburger="darkLogo"
             />
 

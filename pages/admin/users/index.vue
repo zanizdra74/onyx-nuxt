@@ -2,7 +2,13 @@
   <main>
     <div class="header-with-add row row-between">
       <h1>Users</h1>
-      <button type="button" class="btn">Create New</button>
+      <button
+        type="button"
+        class="btn"
+        @click="createUser"
+      >
+        Create New
+      </button>
     </div>
     <div>
 <!--        <tab-elements :arr-elements="arrElements" :show-delete-button="showDeleteButton" />-->
@@ -49,7 +55,7 @@
 export default {
   name: "indexAdminUsers",
   layout: "admin",
-  middleware: ['admin-auth'],
+//  middleware: ['admin-auth'],
   async asyncData({store}) {
     const users = await store.dispatch('users/getAllUsers')
     console.log('users arrElements = ', users)
@@ -58,6 +64,11 @@ export default {
   data: ()=>({/*    showDeleteButton: false,*/}),
   mounted() {console.log('users->', this.users)},
   methods: {
+    createUser(){
+      console.log(`Create action login->`, this.localePath('/admin/users/createNewUser'))
+      this.$router.push(this.localePath('/admin/users/createNewUser'))
+//      this.$router.push({path: this.localePath('admin/users/createNewUser')});
+    },
     editUser(login){
       console.log(`login action login->${login}`)
     },

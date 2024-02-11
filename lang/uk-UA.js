@@ -11,7 +11,7 @@ export default {
       title: 'Проекти'
     },
     products: {
-      title: 'Товари',
+      title: 'Продукція',
     },
     articles: {
       title: 'Статті',
@@ -25,19 +25,19 @@ export default {
       title: 'Вгору',
     },
     about: {
-      title: 'О нас',
+      title: 'Про нас',
     },
     production: {
-      title: 'Товари',
+      title: 'Продукція',
     },
     benefits: {
-      title: 'Выгоди',
+      title: 'Переваги',
     },
     reviews: {
-      title: 'Отзывы',
+      title: 'Відгуки',
     },
     contacts: {
-      title: 'Контакті',
+      title: 'Контакти',
     },
   },
 }

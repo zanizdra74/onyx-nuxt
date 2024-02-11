@@ -6,9 +6,9 @@
         <header-nav
           class="chameleon-header"
           dark-logo = "light"
+          :show-hamburger-menu="!seeMainMenu"
           :type-nav-menu=typeMenu
         />
-
       </header>
       <main>
         <nuxt />
@@ -17,26 +17,24 @@
     <footer>
       <footer-main />
     </footer>
-<!--    <main-menu v-if="seeMainMenu" />-->
+    <main-menu :visible-main-menu="seeMainMenu" />
   </div>
 </template>
 <script>
 import HeaderNav from "~/components/main/headerNav";
 import FooterMain from "../components/main/footerMain";
-/*import MainMenu from "../components/main/mainMenu";*/
+import MainMenu from "../components/main/mainMenu";
 
 export default {
   name: "secondary",
   components: {
-    /*MainMenu,*/
+    MainMenu,
     HeaderNav,
     FooterMain,
   },
   data(){
     return{
-/*
       seeMainMenu: false,
-*/
       seeHamburger: true,
       typeMenu: 'line',
     }
@@ -49,11 +47,11 @@ export default {
       this.$once('hook:beforeDestroy', () => window.removeEventListener('resize', onResize));
     }
   },
-/*  mounted() {
+  mounted() {
     $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something);
     $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something);
-    $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
-  }*/
+//    $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
+  }
 }
 </script>
 <style>

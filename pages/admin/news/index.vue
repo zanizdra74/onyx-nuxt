@@ -9,6 +9,8 @@
 //      components: {ConfirmModal},
     name: "indexAdminNews",
     layout: "admin",
+    middleware: ['admin-auth'],
+
     async asyncData({store}) {
 //      const arrNews = await store.dispatch('news/fetchAdmin')
 //      return {arrNews}
