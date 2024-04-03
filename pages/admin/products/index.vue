@@ -5,7 +5,7 @@
       <button
         type="button"
         class="btn"
-        @click="$router.push(localePath('/admin/users/createNewUser'))"
+        @click="$router.push(localePath('/admin/products/create-product'))"
       >
         Create New
       </button>

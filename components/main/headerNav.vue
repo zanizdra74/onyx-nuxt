@@ -22,9 +22,7 @@
               v-if="showHamburgerMenu"
               :dark-hamburger="darkLogo"
             />
-
           </div>
-
         </div>
       </div>
     </div>
@@ -34,14 +32,14 @@
   import hamburgerMenu from "./hamburgerMenu";
   import MainMenu from "./mainMenu";
   import HeaderNav from "./elements/menus/headerNav";
-    export default {
-        components: {HeaderNav, MainMenu, hamburgerMenu },
-        props:[ 'darkLogo', "showHamburgerMenu", "typeNavMenu", ]
 
-    }
+  export default {
+      components: {HeaderNav, MainMenu, hamburgerMenu },
+      props:["darkLogo", "showHamburgerMenu", "typeNavMenu", ]
+  }
 </script>
 
-<style>
+<style >
   #container-header{
     z-index: 10;
   }
@@ -96,5 +94,6 @@
   }
   .darkNav{
     background-color: rgba(45,58,75,0.95);
+    /*background: no-repeat url("../../assets/image/secondaryHeader.png");*/
   }
 </style>

@@ -21,13 +21,16 @@ module.exports = {
   },
   loading: { color: '#fff' },
   css: [
+    '@fortawesome/fontawesome-svg-core/styles.css',
     '@/assets/css/index.css',
     '@/assets/css/admin.css',
   ],
   plugins: [
-    '@/plugins/globals'
+    '@/plugins/globals',
+    '~/plugins/fontawesome.js'
   ],
   buildModules: [
+
   ],
   modules: [
     // Doc: https://axios.nuxtjs.org/usage

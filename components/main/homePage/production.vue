@@ -1,4 +1,4 @@
-<template>
+_<template>
   <section id="section-production" class="section-main">
     <h1>Продукция</h1>
     <div id="container-slider-production" >

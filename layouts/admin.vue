@@ -13,10 +13,33 @@
             <a class="nav-link parent-nav-link" href="" @click.prevent="showSubUsers=!showSubUsers">Users</a>
             <ul v-if="showSubUsers" class="sub-nav-bar">
               <li class="nav-item sub-nav-link">
-                <nuxt-link class="nav-link sub-link" to="/admin/users">Users</nuxt-link>
+                <nuxt-link class="nav-link sub-link" :to="localePath('/admin/users')">Users</nuxt-link>
               </li>
               <li class="nav-item sub-nav-link">
-                <nuxt-link class="nav-link sub-link" to="/admin/users/createNewUser">Create User</nuxt-link>
+                <nuxt-link class="nav-link sub-link" :to="localePath('/admin/users/createNewUser')">
+                  Create User
+                </nuxt-link>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link parent-nav-link" href="" @click.prevent="showSubProducts=!showSubProducts">Products</a>
+            <ul v-if="showSubProducts" class="sub-nav-bar">
+              <li class="nav-item sub-nav-link">
+                <nuxt-link class="nav-link sub-link" :to="localePath('/admin/products')">Products</nuxt-link>
+              </li>
+              <li class="nav-item sub-nav-link">
+                <nuxt-link class="nav-link sub-link" :to="localePath('/admin/products/create-product')">
+                  Create Product
+                </nuxt-link>
+              </li>
+              <li class="nav-item sub-nav-link">
+                <nuxt-link class="nav-link sub-link" :to="localePath('/admin/products/categories')">Categories</nuxt-link>
+              </li>
+              <li class="nav-item sub-nav-link">
+                <nuxt-link class="nav-link sub-link" :to="localePath('/admin/products/create-category')">
+                  Create Category
+                </nuxt-link>
               </li>
             </ul>
           </li>
@@ -48,6 +71,7 @@ export default {
     return{
       showSubPages: false,
       showSubUsers: false,
+      showSubProducts: false,
     }
   },
   computed: {

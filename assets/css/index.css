@@ -124,8 +124,7 @@ h3{
 .container{
   max-width: 1140px;
   width: 100%;
-  padding-right: 15px;
-  padding-left: 15px;
+  padding: 15px;
   margin-right: auto;
   margin-left: auto;
 }
@@ -134,7 +133,7 @@ h3{
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: rgb(255, 255, 255);
   box-shadow: 0px 15px 25px 0px rgb(136 136 136 / 25%);
   padding: 35px 25px 20px;
@@ -164,7 +163,33 @@ button.item-form{
   display: flex;
   align-items: center;
 }
-
+#main-content{
+  width: 100%;
+}
+.block-title-h1{
+  width: fit-content;
+}
+.title-page{
+  border-bottom: #F5E144;
+}
+.title-page-underline{
+  width: 70%;
+  background: rgba(245, 225, 68, 1);
+  height: 3px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5px;
+}
+.title-page::after{
+  width: 50px;
+  height: 5px;
+  border-bottom: 5px solid #F5E144;
+}
+.content.container{
+  padding: 15px 0;
+  margin-right: 0;
+  margin-left: 0;
+}
 @media (max-width: 1999px){
   .container{
     max-width: 960px;

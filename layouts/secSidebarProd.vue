@@ -3,15 +3,18 @@
     <div id="content">
       <header>
 <!--        <sec-header />-->
-        <header-nav
+        <header-nav-secondary
           class="chameleon-header"
-          dark-logo = "light"
           :show-hamburger-menu="!seeMainMenu"
           :type-nav-menu=typeMenu
         />
       </header>
-      <main>
-        <div class="content container">
+      <main class="flex-main">
+        <div id="sidebar-products">
+<!--          <side-product-menu />-->
+          <side-product-menu :slug-page="labelSlugPage"/>
+        </div>
+        <div id="main-content">
           <nuxt />
         </div>
       </main>
@@ -26,10 +29,14 @@
 import HeaderNav from "~/components/main/headerNav";
 import FooterMain from "../components/main/footerMain";
 import MainMenu from "../components/main/mainMenu";
+import SideProductMenu from "../components/main/elements/menus/sidePoductMenu/sideProductMenu";
+import HeaderNavSecondary from "../components/main/headerNavSecondary";
 
 export default {
   name: "secondary",
   components: {
+    HeaderNavSecondary,
+    SideProductMenu,
     MainMenu,
     HeaderNav,
     FooterMain,
@@ -39,6 +46,8 @@ export default {
       seeMainMenu: false,
       seeHamburger: true,
       typeMenu: 'line',
+      labelSlugPage: '',
+      showSubCategory: '',
     }
   },
   created() {
@@ -52,7 +61,10 @@ export default {
   mounted() {
     $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something);
     $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something);
-//    $nuxt.$on('labelShowHamburgerMenu', something => this.seeHamburger = something);
+    $nuxt.$on('labelSlugPage', something => {
+      console.log('labelSlugPage ===>>>>>>>>', something)
+      this.labelSlugPage = something
+    });
   }
 }
 </script>
@@ -69,6 +81,9 @@ html, body, #__nuxt, #__layout{
   display: flex;
   flex-direction: column;
 }
+.flex-main{
+  display: flex;
+}
 #content {
   flex: 1 0 auto;
 }
@@ -77,5 +92,14 @@ footer {
 }
 main{
   margin-top: 80px;
+}
+#main-content{
+  padding: 15px 20px;
+  width: 67%;
+}
+#sidebar-products{
+  width: 33%;
+/*  max-width: 300px;*/
+  margin: 50px 15px;
 }
 </style>
