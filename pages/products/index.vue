@@ -39,6 +39,7 @@ export default {
     console.log('lang--->', this.$t('hello'))
     const pageSlug = this.$route.params.name
     $nuxt.$emit('labelSlugPage', pageSlug);
+    $nuxt.$emit('labelSlugMenu', pageSlug);
 
     this.productOfSlug = await this.$store.dispatch('products/getProducts')
     console.log('this.productOfSlug = ', this.productOfSlug )

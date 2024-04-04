@@ -29,9 +29,9 @@ export default {
 
     const introSectionJs = document.getElementById("cd-intro-background")
     let introSectionHeight = introSectionJs.offsetHeight
-
-    introSectionJs.style.setProperty("background", "url(/_nuxt/upload/adminPages/home/" + this.imageHeader + " )  no-repeat center center")
-
+//временно звкосентировано
+//    introSectionJs.style.setProperty("background", "url(/_nuxt/upload/adminPages/home/" + this.imageHeader + " )  no-repeat center center")
+//    introSectionJs.style.setProperty("background", "url('../../assets/cd-intro-background.jpg') no-repeat center center")
     triggerAnimation();
 
     window.onresize = () => {

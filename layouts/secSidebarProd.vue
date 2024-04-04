@@ -2,7 +2,6 @@
   <div id="body">
     <div id="content">
       <header>
-<!--        <sec-header />-->
         <header-nav-secondary
           class="chameleon-header"
           :show-hamburger-menu="!seeMainMenu"
@@ -11,8 +10,7 @@
       </header>
       <main class="flex-main">
         <div id="sidebar-products">
-<!--          <side-product-menu />-->
-          <side-product-menu :slug-page="labelSlugPage"/>
+          <side-product-menu :slug-page="labelSlugPage" :active-menu="labelSlugMenu" />
         </div>
         <div id="main-content">
           <nuxt />
@@ -47,6 +45,7 @@ export default {
       seeHamburger: true,
       typeMenu: 'line',
       labelSlugPage: '',
+      labelSlugMenu: '',
       showSubCategory: '',
     }
   },
@@ -65,6 +64,10 @@ export default {
       console.log('labelSlugPage ===>>>>>>>>', something)
       this.labelSlugPage = something
     });
+    $nuxt.$on('labelSlugMenu', something => {
+      console.log('labelSlugMenu ===>>>>>>>>', something)
+      this.labelSlugMenu = something
+    })
   }
 }
 </script>

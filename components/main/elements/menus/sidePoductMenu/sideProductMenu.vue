@@ -1,7 +1,5 @@
 <template>
-  <ul
-    class="accordion"
-  >
+  <ul id="menu-accordion" class="accordion">
     <li
       class=""
       v-for="(category, indexCategory) in production "
@@ -22,7 +20,11 @@
           v-for="subcategory in category.data"
         >
           <transition name="fade">
-            <div class="accordion-item accordion-item-second"  v-if="slugPage === category.slug">
+            <div
+              class="accordion-item accordion-item-second"
+              :class="{activeItemMenu: activeMenu === subcategory.slug}"
+              v-if="slugPage === category.slug"
+            >
               <ul
                 class="subcategory"
                 v-if="subcategory.data.length>0"
@@ -33,8 +35,15 @@
                 </div>
                 <li
                   v-for="product in subcategory.data"
+                  class="test"
+                  :class="{activeItemMenu: activeMenu === product.slug}"
                 >
-                  <NuxtLink :to="'/products/' + product.slug">{{product.title}}</NuxtLink>
+                  <NuxtLink
+                    :to="'/products/' + product.slug"
+
+                  >
+                    {{product.title}}
+                  </NuxtLink>
                 </li>
               </ul>
               <NuxtLink
@@ -48,7 +57,7 @@
           </transition>
         </li>
       </ul>
-      <a v-else>{{category.title}}</a>
+      <a v-else >{{category.title}}</a>
     </li>
   </ul>
 </template>
@@ -56,7 +65,7 @@
 <script>
 export default {
   name: "sideProductMenu",
-  props: ["slugPage", ],
+  props: ["slugPage", "activeMenu"],
 
   data() {
     return {
@@ -92,13 +101,16 @@ export default {
 .accordion{
   font-size: 1.2rem;
 }
-
+#menu-accordion a{
+  color: #2d3a4b;
+}
 .accordion-item{
   padding: 5px 5px 5px 15px;
   border-radius: 3px;
   box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
   margin-top: 5px;
 }
+.activeItemMenu,
 .accordion-item:hover{
   box-shadow: 0px 4px 5px #f5e14499;
 }

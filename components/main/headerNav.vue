@@ -72,7 +72,8 @@
     pointer-events: auto;
   }
   .chameleon-header-block{
-    width: 992px;
+/*    width: 992px; */
+    width: 80%;
     display: flex;
     justify-content: space-between;
     align-items: center;

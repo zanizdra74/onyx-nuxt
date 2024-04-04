@@ -36,8 +36,10 @@ export default {
     const products = await this.$store.dispatch('products/getProducts')
     const pageSlug = this.$route.params.name
 
-    const pageSlugOfMenu = this.checkSlug(pageSlug, products)
-    $nuxt.$emit('labelSlugPage', pageSlugOfMenu);
+    const labelSlug = this.checkSlug(pageSlug, products)
+    console.log('labelSlug =!!!>>>>>>> ', labelSlug, ' pageSlug =  ', pageSlug)
+    $nuxt.$emit('labelSlugPage', labelSlug);
+    $nuxt.$emit('labelSlugMenu', labelSlug === pageSlug ? labelSlug: pageSlug );
 
     this.productOfSlug= products.reduce((accumulator, itemProd) => {
       if (itemProd.slug === pageSlug) {
