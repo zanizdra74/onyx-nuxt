@@ -97,12 +97,12 @@ main{
   margin-top: 80px;
 }
 #main-content{
-  padding: 15px 20px;
-  width: 67%;
+  /* padding: 15px 20px; */
+  min-width: 75%;
 }
 #sidebar-products{
-  width: 33%;
+  min-width: 25%;
 /*  max-width: 300px;*/
-  margin: 50px 15px;
+/*  margin: 50px 15px; */
 }
 </style>

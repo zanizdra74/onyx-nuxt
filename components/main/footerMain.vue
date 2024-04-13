@@ -57,7 +57,7 @@
 }
 #footer-main{
   background-color: #2e313d;
-  width: 100vw;
+/*  width: 100vw; */
   margin-left: 0;
   margin-right: 0;
   color: #E4DDDD;

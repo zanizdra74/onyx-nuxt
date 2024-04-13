@@ -101,6 +101,9 @@ export default {
 .accordion{
   font-size: 1.2rem;
 }
+#menu-accordion{
+  padding: 50px 15px;
+}
 #menu-accordion a{
   color: #2d3a4b;
 }
@@ -120,6 +123,7 @@ export default {
   background-color: rgba(222,232,233,0.25);
 }
 .accordion-item a{
+  display: block;
   text-decoration: none;
 }
 .icon-close path{

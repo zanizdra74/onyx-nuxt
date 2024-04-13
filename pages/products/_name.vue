@@ -1,13 +1,18 @@
 <template>
-  <div>
+  <div id="product-content">
     <div class="block-title-h1">
       <h1 class="title-page">{{ productOfSlug.title }}</h1>
       <div class="title-page-underline"></div>
     </div>
+    <div class="content" v-if="productOfSlug.name !==''">
+      <product-card :products-data="productOfSlug" />
+    </div>
+    <!--
     <div class="content container" v-if="productOfSlug.name !==''">
       <products-list v-if="productOfSlug.data.length>0" :products-list="productOfSlug.data" />
       <product-card v-else :products-data="productOfSlug" />
     </div>
+    -->
   </div>
 </template>
 
@@ -66,6 +71,9 @@ export default {
 </script>
 
 <style scoped>
+#product-content{
+  padding: 15px 20px;
+}
 /*.content.container{
   padding: 15px 0;
   margin-right: 0;

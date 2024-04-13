@@ -8,13 +8,13 @@
       <div class="container-item-advantages">
 
         <div class="icon-advantages" v-if="indexAdvantages % 2 === 0">
-          <img class="" :src="require('~/assets/icon/productParagrath/' + itemAdvantages.icon)"  alt="">
+          <img class="" :src="require('~/assets/icon/' + itemAdvantages.icon)"  alt="">
         </div>
         <div class="text-advantages">
           <div>{{ itemAdvantages.text }}</div>
         </div>
         <div class="icon-advantages"  v-if="indexAdvantages % 2 === 1">
-          <img class="" :src="require('~/assets/icon/productParagrath/' + itemAdvantages.icon)"  alt="">
+          <img class="" :src="require('~/assets/icon/' + itemAdvantages.icon)"  alt="">
         </div>
       </div>
     </div>
