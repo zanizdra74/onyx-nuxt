@@ -1,29 +1,13 @@
 <template>
-  <div id="product-content">
-    <div class="block-title-h1">
-      <h1 class="title-page">{{ productOfSlug.title }}</h1>
-      <div class="title-page-underline"></div>
-    </div>
-    <div class="content" v-if="productOfSlug.name !==''">
-      <product-card :products-data="productOfSlug" />
-    </div>
-    <!--
-    <div class="content container" v-if="productOfSlug.name !==''">
-      <products-list v-if="productOfSlug.data.length>0" :products-list="productOfSlug.data" />
-      <product-card v-else :products-data="productOfSlug" />
-    </div>
-    -->
-  </div>
+  <page-component :title-page="productOfSlug.title" :product-of-slug="productOfSlug" />
 </template>
 
 <script>
-import product from "./product";
-import ProductCard from "../../components/main/elements/productElements/productCard";
-import ProductsList from "../../components/main/elements/productElements/productsList";
+import PageComponent from "../../components/main/elements/productElements/pageComponent";
 
 export default {
-  name: "_name",
-  components: {ProductsList, ProductCard},
+  name: "varProducts",
+  components: {PageComponent,/* ProductsList, ProductCard*/},
   layout: "secSidebarProd",
   data() {
     return {
@@ -38,11 +22,11 @@ export default {
     }
   },
   async mounted() {
-    const products = await this.$store.dispatch('products/getProducts')
+    const allProducts = await this.$store.dispatch('products/getProducts')
+    const products = allProducts.data
     const pageSlug = this.$route.params.name
 
     const labelSlug = this.checkSlug(pageSlug, products)
-    console.log('labelSlug =!!!>>>>>>> ', labelSlug, ' pageSlug =  ', pageSlug)
     $nuxt.$emit('labelSlugPage', labelSlug);
     $nuxt.$emit('labelSlugMenu', labelSlug === pageSlug ? labelSlug: pageSlug );
 
@@ -71,12 +55,4 @@ export default {
 </script>
 
 <style scoped>
-#product-content{
-  padding: 15px 20px;
-}
-/*.content.container{
-  padding: 15px 0;
-  margin-right: 0;
-  margin-left: 0;
-}*/
 </style>

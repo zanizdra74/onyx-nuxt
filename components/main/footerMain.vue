@@ -42,7 +42,8 @@
   grid-template-areas:
     'discription  address'
     'copyright    copyright';
-  width: 992px;
+  /*width: 992px;*/
+  width: 85%;
   padding-top: 23px;
 }
 .container-top-left{
@@ -57,7 +58,7 @@
 }
 #footer-main{
   background-color: #2e313d;
-/*  width: 100vw; */
+  width: 100vw;
   margin-left: 0;
   margin-right: 0;
   color: #E4DDDD;

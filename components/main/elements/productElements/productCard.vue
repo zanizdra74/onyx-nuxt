@@ -1,7 +1,7 @@
 <template>
   <div class="content form-shadow padding-container">
-    <product-slider :product-data="productsData"/>
-    <advantages :product-data="productsData.description.advantages" />
+    <product-slider v-if="productsData.images.length>0" :product-data="productsData"/>
+    <advantages v-if="productsData.description.advantages.length>0" :product-data="productsData.description.advantages" />
     <products-list v-if="productsData.data.length>0" :products-list="productsData.data" />
   </div>
 </template>
@@ -20,6 +20,7 @@ export default {
     }
   },
   mounted() {
+    console.log('productsData == ', this.productsData)
     this.product = this.productsData
   },
 }

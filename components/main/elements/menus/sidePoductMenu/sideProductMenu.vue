@@ -83,7 +83,8 @@ export default {
     }
   },
   async mounted() {
-    this.production =await this.$store.dispatch('products/getProducts')
+    const allProducts = await this.$store.dispatch('products/getProducts')
+    this.production = allProducts.data
   },
   methods: {
     openCategory(index){

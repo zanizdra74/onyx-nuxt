@@ -89,12 +89,12 @@ export default {
   color: #2D3A4B;
 }
 #nav-bottom-slider li:first-child {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
 }
 #nav-bottom-slider li:last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
 }
 #nav-bottom-slider li:hover, #nav-bottom-slider li:active,
 #nav-bottom-slider .activeÍtemNav{

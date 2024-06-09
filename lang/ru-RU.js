@@ -17,7 +17,13 @@ export default {
       title: 'Статьи',
     },
     contacts: {
-      title: 'Контакты'
+      title: 'Контакты',
+    },
+    info: {
+      title: 'Інформація',
+    },
+    certificates : {
+      title: "Сертификаты",
     },
   },
   homeSections: {

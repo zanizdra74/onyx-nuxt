@@ -58,16 +58,10 @@ export default {
     }
   },
   mounted() {
-    $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something);
-    $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something);
-    $nuxt.$on('labelSlugPage', something => {
-      console.log('labelSlugPage ===>>>>>>>>', something)
-      this.labelSlugPage = something
-    });
-    $nuxt.$on('labelSlugMenu', something => {
-      console.log('labelSlugMenu ===>>>>>>>>', something)
-      this.labelSlugMenu = something
-    })
+    $nuxt.$on('labelShowMainMenu', something => this.seeMainMenu = something)
+    $nuxt.$on('labelCloseMainMenu', something => this.seeMainMenu = something)
+    $nuxt.$on('labelSlugPage', something => this.labelSlugPage = something)
+    $nuxt.$on('labelSlugMenu', something => this.labelSlugMenu = something)
   }
 }
 </script>

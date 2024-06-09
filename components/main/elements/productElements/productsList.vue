@@ -19,45 +19,16 @@ export default {
   props: ["productsList", ],
   data(){
     return {
-//      products: []
     }
   },
   mounted() {
     console.log("!!!!!!!  productsList ==> ", this.productsList)
-/*    this.products = this.productsList.map(el => {
-      const img = '~/upload/products/4853055417_w640_h640_4853055417.webp';
-      return {
-        title: el.title,
-//      src: require(el.images[0]),
-//        src: require(String(img)),
- //                       ~/upload/products/4853055417_w640_h640_4853055417.webp
-        src: require('~/upload/products/4853055417_w640_h640_4853055417.webp'),
-      }
-    })*/
- //   console.log ('this.products = ', this.products)
-
   },
-  methods: {
-/*    pushToProduct(itemProductsList){
-      switch (itemProductsList.type){
-        case 'product':
-          this.$router.push({path: '/products/' + index})
-          break
-      }
-      if(itemProductsList.type === 'product'){
-
-      } else {
-
-      }
-    },*/
-  },
+  methods: {},
 }
 </script>
 
 <style scoped>
-/*.block-product-card{
-  display: flex;
-}*/
 .block-item-card{
   text-decoration: none;
 }

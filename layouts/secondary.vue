@@ -3,15 +3,14 @@
     <div id="content">
       <header>
 <!--        <sec-header />-->
-        <header-nav
+        <header-nav-secondary
           class="chameleon-header"
-          dark-logo = "light"
           :show-hamburger-menu="!seeMainMenu"
           :type-nav-menu=typeMenu
         />
       </header>
       <main>
-        <div class="content container">
+        <div class="content content-secondary">
           <nuxt />
         </div>
       </main>
@@ -26,12 +25,12 @@
 import HeaderNav from "~/components/main/headerNav";
 import FooterMain from "../components/main/footerMain";
 import MainMenu from "../components/main/mainMenu";
+import HeaderNavSecondary from "../components/main/headerNavSecondary";
 
 export default {
   name: "secondary",
   components: {
-    MainMenu,
-    HeaderNav,
+    HeaderNavSecondary,
     FooterMain,
   },
   data(){
@@ -71,6 +70,12 @@ html, body, #__nuxt, #__layout{
 }
 #content {
   flex: 1 0 auto;
+}
+.content-secondary{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
 }
 footer {
   flex-shrink: 0;

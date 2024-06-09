@@ -19,6 +19,12 @@ export default {
     contacts: {
       title: 'Контакти'
     },
+    info: {
+      title: 'Информация',
+    },
+    certificates : {
+      title: "Сертифікати",
+    },
   },
   homeSections: {
     home: {
